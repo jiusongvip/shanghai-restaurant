@@ -1,0 +1,19 @@
+---
+export interface Props {
+  city: string;
+  count: number;
+  slug: string;
+}
+
+const { city, count, slug } = Astro.props;
+const cityUrl = "https://shanghai-restaurant.com/shanghai-restaurant-" + slug + "/";
+---
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Shanghai Restaurants in " + city,
+  "description": "Discover " + count + " top-rated Shanghai restaurants in " + city + ". Find authentic xiaolongbao, dim sum, and Shanghainese cuisine.",
+  "url": cityUrl,
+  "about": { "@type": "Place", "name": city }
+})} />

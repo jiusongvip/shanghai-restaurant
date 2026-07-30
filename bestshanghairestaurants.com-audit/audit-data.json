@@ -1,0 +1,341 @@
+{
+  "summary": {
+    "health_score": 71,
+    "business_type": "Content Publisher / Directory — curated Shanghai restaurant guide with city hubs, cuisine pages, and blog content",
+    "top_findings": [
+      "Missing canonical tags on all 38 pages — duplicates and indexing dilution risk",
+      "Zero OG image tags across entire site — weak social sharing previews",
+      "Image payload exceeds 2MB total with single images up to 365KB — mobile performance risk",
+      "Inconsistent schema coverage (68%) — missing on blog, best-restaurants, and cuisine sub-pages",
+      "No llms.txt or LLM-specific directives — missed AI search opportunity"
+    ],
+    "quick_wins": [
+      "Add <link rel=\"canonical\"> to Layout.astro template — fixes all 38 pages in one change",
+      "Add OG image meta tags to the layout template — fixes social previews site-wide",
+      "Remove or convert 3 temp JPG files (temp_jjtb.jpg, temp_xlb.jpg, temp_xrj.jpg) to WebP",
+      "Add BreadcrumbList structured data to Layout.astro for all interior pages",
+      "Add lastmod dates to sitemap entries"
+    ]
+  },
+  "categories": [
+    {
+      "name": "Technical SEO",
+      "score": 65,
+      "weight": 22,
+      "what_works": [
+        "Clean URL structure with trailing-slash consistency across all 38 pages",
+        "robots.txt correctly configured with sitemap reference",
+        "XML sitemap properly generated via @astrojs/sitemap with all pages listed",
+        "No duplicate content paths detected — each URL maps to a single page",
+        "Astro static generation ensures fast server-side rendering and crawlability"
+      ],
+      "findings": [
+        {
+          "title": "Missing canonical tags on all pages",
+          "severity": "Critical",
+          "description": "No <link rel=\"canonical\"> tag found on any of the 38 pages. Without canonicals, search engines may index variations (www vs non-www, HTTP vs HTTPS, URL parameters) and dilute ranking signals. Additionally, self-referencing canonicals protect against content scraping.",
+          "recommendation": "Add a self-referencing canonical link to the shared Layout.astro template. This fixes every page in a single change. Use: <link rel=\"canonical\" href={new URL(Astro.url.pathname, 'https://bestshanghairestaurants.com').href} />"
+        },
+        {
+          "title": "No robots meta tags on any page",
+          "severity": "High",
+          "description": "No <meta name=\"robots\"> directive found on any page. While not strictly required when you want 'index, follow' (the default), explicit robots tags prevent accidental noindex inheritance and give clear intent signals.",
+          "recommendation": "Add <meta name=\"robots\" content=\"index, follow\"> to Layout.astro as a safe default, and allow page-specific overrides for privacy policy or thin pages."
+        },
+        {
+          "title": "Sitemap missing lastmod and changefreq attributes",
+          "severity": "Medium",
+          "description": "The sitemap-0.xml contains only <loc> entries with no <lastmod>, <changefreq>, or <priority> attributes. This misses signals that help crawlers prioritize fresh content like blog posts over static pages.",
+          "recommendation": "Configure @astrojs/sitemap to include lastmod timestamps. In astro.config.mjs, set `serialize(item)` callback to add the page's build time or frontmatter date."
+        },
+        {
+          "title": "No hreflang tags for international city pages",
+          "severity": "Medium",
+          "description": "City pages (NYC, LA, London, Sydney) target different geographic audiences in the same language (en). Hreflang tags would help search engines serve the correct city page to users in each region and prevent these pages from competing against each other.",
+          "recommendation": "Since all pages are in English, use hreflang=\"en-us\" for US pages (NYC, LA) and \"en-gb\" for London, \"en-au\" for Sydney. Add to the <head> or sitemap."
+        },
+        {
+          "title": "Site not yet live — DNS does not resolve",
+          "severity": "Critical",
+          "description": "Neither bestshanghairestaurants.com nor www.bestshanghairestaurants.com resolves via DNS. The site cannot be crawled or indexed until deployed and DNS is configured.",
+          "recommendation": "Deploy the static build to a hosting provider (Cloudflare Pages, Vercel, Netlify) and configure DNS A/AAAA records or CNAME for the domain."
+        }
+      ]
+    },
+    {
+      "name": "Content Quality",
+      "score": 78,
+      "weight": 23,
+      "what_works": [
+        "Strong E-E-A-T signals: Michelin references, dish expertise, seasonal knowledge (hairy crab timing)",
+        "Substantive long-form content on pillar pages: cuisine guide, xiaolongbao guide, shengjianbao guide",
+        "FAQ section on homepage addresses real user queries with natural language answers",
+        "Restaurant detail pages include specific dish recommendations and practical dining tips",
+        "Consistent brand voice — authoritative yet approachable food writing"
+      ],
+      "findings": [
+        {
+          "title": "Cuisine sub-pages have thin content descriptions",
+          "severity": "Medium",
+          "description": "Pages like /cuisine/benbang/ have meta descriptions of only ~70 characters (\"Sweet, soy-braised, oil-rich - the original Shanghai comfort food.\") and minimal on-page content. These pages act as category hubs but lack the depth to rank independently.",
+          "recommendation": "Expand each cuisine sub-page to 300-500 words with dish examples, restaurant links, and historical context. These are high-value category pages that should drive discovery traffic."
+        },
+        {
+          "title": "Blog index H1 is just 'Blog'",
+          "severity": "Medium",
+          "description": "The blog listing page (/blog/) has <h1>Blog</h1> as its heading — too generic to match any meaningful search query. The title tag is strong (\"Blog: Shanghai Restaurant Stories & Guides | Best Shanghai Restaurants\") but the H1 doesn't match.",
+          "recommendation": "Change the H1 to something like 'Shanghai Restaurant Stories, Guides & Food Culture' to align with the title tag and capture informational intent."
+        },
+        {
+          "title": "No author bylines or publication dates visible on blog posts",
+          "severity": "Low",
+          "description": "Blog post pages don't display author names or publication dates in the visible content, which reduces E-E-A-T signals for Google's assessment of content credibility.",
+          "recommendation": "Add visible publication dates and an author byline (even if generic like 'Best Shanghai Restaurants Editorial Team') to blog post pages."
+        },
+        {
+          "title": "Privacy policy and reservations pages have minimal content",
+          "severity": "Low",
+          "description": "These utility pages serve a functional purpose and don't need to rank, but they still consume crawl budget and appear in the sitemap.",
+          "recommendation": "Consider adding <meta name=\"robots\" content=\"noindex, follow\"> to the privacy policy page so it doesn't compete for index slots."
+        }
+      ]
+    },
+    {
+      "name": "On-Page SEO",
+      "score": 70,
+      "weight": 20,
+      "what_works": [
+        "All 38 pages have unique, keyword-rich title tags with brand suffix",
+        "Every page has a descriptive meta description (100% coverage)",
+        "All 37 <img> tags include alt text (100% coverage)",
+        "Clean heading hierarchy with one H1 per page",
+        "1,013 internal links across 38 pages — strong internal linking density (~27 links/page avg)"
+      ],
+      "findings": [
+        {
+          "title": "Zero OG image tags across entire site",
+          "severity": "Critical",
+          "description": "Not a single page includes <meta property=\"og:image\">. Social media shares (Facebook, LinkedIn, Twitter/X) will show blank or default preview cards. For a restaurant/food site where visuals are the primary draw, this is a major missed opportunity for social traffic.",
+          "recommendation": "Add a default OG image (branded hero image) to Layout.astro, and allow individual pages to override with their featured image. Use absolute URLs: <meta property=\"og:image\" content=\"https://bestshanghairestaurants.com/images/og-default.webp\" />"
+        },
+        {
+          "title": "Missing canonical tags (also listed in Technical)",
+          "severity": "Critical",
+          "description": "Covered in Technical SEO. Same recommendation applies — fix in Layout.astro.",
+          "recommendation": "See Technical SEO section."
+        },
+        {
+          "title": "Some title tags could be more concise",
+          "severity": "Low",
+          "description": "Example: 'Shanghai Cuisine Guide: 20 Must-Try Dishes & Where to Eat Them | Best Shanghai Restaurants' is 91 characters. While within the ~60-char display limit, it's at the edge. Some titles like 'Benbang (Home-Style) — Shanghai Cuisine Guide | Best Shanghai Restaurants' use em dashes that may render poorly in SERPs.",
+          "recommendation": "Keep title tags under 60 characters for display safety. Replace em dashes with pipes or hyphens in titles."
+        },
+        {
+          "title": "No Twitter/X image card tags",
+          "severity": "High",
+          "description": "While twitter:card is present (summary_large_image), no twitter:image is set on any page. Twitter will fall back to og:image if present, but as noted, og:image is also missing. This means Twitter shares show no image preview.",
+          "recommendation": "Add <meta name=\"twitter:image\" content=\"...\"> alongside the og:image fix in Layout.astro."
+        }
+      ]
+    },
+    {
+      "name": "Schema / Structured Data",
+      "score": 68,
+      "weight": 10,
+      "what_works": [
+        "FAQPage schema on homepage with 6 questions — eligible for rich results",
+        "WebSite and Organization schemas with proper URLs on homepage",
+        "Restaurant detail pages include LocalBusiness or Restaurant schema where present",
+        "JSON-LD format used correctly (not Microdata)",
+        "No schema validation errors detected in sample pages"
+      ],
+      "findings": [
+        {
+          "title": "Schema coverage only 68% — 12 of 38 pages have no structured data",
+          "severity": "Medium",
+          "description": "Blog posts, the best-restaurants listing page, cuisine sub-pages, and city directory pages all lack structured data. These page types have clear schema opportunities (BlogPosting, ItemList, CollectionPage).",
+          "recommendation": "Add BlogPosting schema to all 5 blog posts, ItemList schema to /best-shanghai-restaurants/, and CollectionPage schema to cuisine and city pages."
+        },
+        {
+          "title": "No BreadcrumbList on interior pages",
+          "severity": "Medium",
+          "description": "Only the homepage has BreadcrumbList schema. Interior pages like /cuisine/benbang/ or /restaurant/fu-he-hui/ lack breadcrumb structured data, missing an easy rich-result opportunity and internal linking signal.",
+          "recommendation": "Add a dynamic BreadcrumbList to Layout.astro that auto-generates based on the URL path segments."
+        },
+        {
+          "title": "Missing Review and AggregateRating schema on restaurant pages",
+          "severity": "Medium",
+          "description": "Restaurant pages display star ratings (e.g., '4.8 ★★★★★') in visible text but don't include Review or AggregateRating schema. This is a high-value rich result type for restaurant content.",
+          "recommendation": "Add Review or AggregateRating schema to restaurant detail pages using the rating data already present in the content."
+        },
+        {
+          "title": "No ImageObject schema for food photography",
+          "severity": "Low",
+          "description": "The site has high-quality food photography but no ImageObject structured data, which could help images appear in Google Images rich results.",
+          "recommendation": "Wrap featured images in restaurant and dish pages with ImageObject schema including caption, credit, and license where applicable."
+        }
+      ]
+    },
+    {
+      "name": "Performance (CWV)",
+      "score": 72,
+      "weight": 10,
+      "what_works": [
+        "Astro static generation — zero JavaScript framework overhead on most pages",
+        "Single CSS file (19KB) — no render-blocking stylesheet cascade",
+        "WebP image format used for all primary images",
+        "No third-party script dependencies visible in source",
+        "Font is self-hosted (Geist Sans woff2, 33KB)"
+      ],
+      "findings": [
+        {
+          "title": "Large hero images — up to 365KB single file, ~2MB total image payload",
+          "severity": "High",
+          "description": "Individual WebP images range from 16KB to 365KB. The 15 WebP images total approximately 2MB. On a 3G connection, this causes significant LCP delays. The largest images (photo-1551218808: 336KB, temp_xrj.jpg: 365KB) will dominate Largest Contentful Paint times.",
+          "recommendation": "Generate responsive image variants (480w, 800w, 1200w) using Astro's Image component or sharp. Implement srcset + sizes for responsive loading. Target <100KB for hero images on mobile viewports."
+        },
+        {
+          "title": "3 temp JPG files not optimized (temp_jjtb.jpg, temp_xlb.jpg, temp_xrj.jpg)",
+          "severity": "Medium",
+          "description": "Three files with 'temp_' prefix exist in production images directory. temp_xrj.jpg is 365KB in JPG format — it should be WebP. These appear to be leftover development assets.",
+          "recommendation": "Either remove these files from the build output or properly name and convert them to WebP."
+        },
+        {
+          "title": "No font preloading",
+          "severity": "Medium",
+          "description": "The Geist Sans font (33KB woff2) is loaded via CSS @font-face but not preloaded. This means the browser discovers it late in the loading sequence, potentially causing a flash of unstyled text (FOUT) or layout shifts.",
+          "recommendation": "Add <link rel=\"preload\" as=\"font\" crossorigin> for the primary woff2 font file in the <head>."
+        },
+        {
+          "title": "Images lack explicit width/height attributes",
+          "severity": "Medium",
+          "description": "Images use CSS (aspect-[4/3], w-full, h-full) for sizing but lack explicit width and height HTML attributes. This prevents the browser from reserving space during layout, potentially causing Cumulative Layout Shift (CLS).",
+          "recommendation": "Always include width and height attributes on <img> tags matching the aspect ratio container. Astro's Image component handles this automatically."
+        },
+        {
+          "title": "No AVIF format support for modern browsers",
+          "severity": "Low",
+          "description": "All images are WebP only. AVIF offers 20-30% better compression at equivalent quality and is supported by all modern browsers.",
+          "recommendation": "Generate AVIF variants alongside WebP using <picture> with <source> fallbacks."
+        }
+      ]
+    },
+    {
+      "name": "AI Search Readiness (GEO)",
+      "score": 75,
+      "weight": 10,
+      "what_works": [
+        "Well-structured content with clear H1/H2/H3 hierarchy — ideal for LLM extraction",
+        "FAQPage structured data provides ready-made Q&A for AI overviews",
+        "Strong entity signals: specific restaurant names, dish names, locations",
+        "Descriptive alt text on all images aids multimodal AI understanding",
+        "Clean, semantic HTML without excessive div nesting"
+      ],
+      "findings": [
+        {
+          "title": "No llms.txt file — missed AI crawler optimization",
+          "severity": "Medium",
+          "description": "The site lacks an /llms.txt file that AI crawlers (ChatGPT, Claude, Perplexity) use to discover and prioritize content. This is a fast-growing SEO signal as LLM search share increases.",
+          "recommendation": "Create /llms.txt with a brief site description and links to key pages. Also generate /llms-full.txt with full content if desired. Follow the llmstxt.org spec."
+        },
+        {
+          "title": "No generative AI crawler directives in robots.txt",
+          "severity": "Medium",
+          "description": "robots.txt is minimal (Allow: /, Sitemap). It does not include directives for AI-specific crawlers like GPTBot, ChatGPT-User, anthropic-ai, or PerplexityBot. Without explicit Allow directives, these crawlers may or may not index content.",
+          "recommendation": "Add explicit Allow directives for major AI crawlers you want indexing your content: GPTBot, ChatGPT-User, anthropic-ai, PerplexityBot."
+        },
+        {
+          "title": "Entity-rich content is ideal for AI citation — maintain this quality",
+          "severity": "Low",
+          "description": "The site's content naturally includes specific entities (Jia Jia Tang Bao, Fu He Hui, xiaolongbao, hairy crab season). This makes it highly citable by AI search systems. Continue this pattern.",
+          "recommendation": "Maintain and expand entity-rich content. Consider adding an entity glossary or knowledge graph section to further strengthen citability."
+        }
+      ]
+    },
+    {
+      "name": "Images",
+      "score": 70,
+      "weight": 5,
+      "what_works": [
+        "100% alt text coverage — all 37 images have descriptive alt attributes",
+        "WebP format used for all primary images — good compression",
+        "Images served from own domain — no third-party image hosting dependency",
+        "Aspect ratio containers (aspect-[4/3]) provide stable image dimensions"
+      ],
+      "findings": [
+        {
+          "title": "No responsive image variants (srcset/sizes)",
+          "severity": "Medium",
+          "description": "All images are served at a single resolution regardless of viewport. Mobile users download the same large images as desktop users, wasting bandwidth and slowing LCP.",
+          "recommendation": "Use Astro's built-in Image component with widths array to generate responsive variants. Example: widths={[480, 800, 1200]} with sizes='(max-width: 800px) 100vw, 50vw'"
+        },
+        {
+          "title": "3 leftover temp JPGs in production image directory",
+          "severity": "Low",
+          "description": "temp_jjtb.jpg (0.3KB), temp_xlb.jpg (0.6KB), and temp_xrj.jpg (365KB) appear to be development artifacts. They shouldn't ship to production.",
+          "recommendation": "Remove temp_* files from the public/images directory and rebuild."
+        },
+        {
+          "title": "No lazy loading on below-fold images",
+          "severity": "Low",
+          "description": "Hero images use loading=\"eager\" (correct), but below-fold images in restaurant cards and cuisine sections also use eager loading, increasing initial page weight.",
+          "recommendation": "Set loading=\"lazy\" on all images below the first viewport. Astro's Image component defaults to lazy loading."
+        }
+      ]
+    }
+  ],
+  "action_plan": {
+    "phases": [
+      {
+        "name": "Phase 1: Critical Fixes",
+        "timeframe": "Week 1",
+        "items": [
+          "Deploy site and configure DNS for bestshanghairestaurants.com",
+          "Add canonical tags to Layout.astro template (fixes all 38 pages)",
+          "Add OG image and Twitter image meta tags to Layout.astro",
+          "Add robots meta tag with 'index, follow' default to Layout.astro"
+        ]
+      },
+      {
+        "name": "Phase 2: High-Impact Improvements",
+        "timeframe": "Weeks 2-3",
+        "items": [
+          "Implement responsive images with srcset/sizes using Astro Image component",
+          "Add BreadcrumbList structured data to Layout.astro for all interior pages",
+          "Add AggregateRating schema to restaurant detail pages",
+          "Expand cuisine sub-pages (benbang, fine-dining, etc.) to 300-500 words each",
+          "Optimize largest images: compress or resize photo-1551218808 (336KB) and temp_xrj.jpg (365KB)"
+        ]
+      },
+      {
+        "name": "Phase 3: Content & Authority",
+        "timeframe": "Month 2",
+        "items": [
+          "Create llms.txt and add AI crawler directives to robots.txt",
+          "Add hreflang tags for city pages (en-us, en-gb, en-au)",
+          "Add BlogPosting schema to all 5 blog posts",
+          "Add visible publication dates and author bylines to blog posts",
+          "Improve blog index H1 to be keyword-rich",
+          "Add lastmod timestamps to sitemap entries"
+        ]
+      },
+      {
+        "name": "Phase 4: Monitoring & Iteration",
+        "timeframe": "Ongoing",
+        "items": [
+          "Set up Google Search Console and submit sitemap",
+          "Add AVIF image format support for modern browsers",
+          "Implement font preloading for Geist Sans",
+          "Add explicit width/height to all images for CLS prevention",
+          "Monitor Core Web Vitals via CrUX dashboard post-deployment",
+          "Set up SEO drift monitoring baseline",
+          "Clean up temp_* image files from production build"
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "findings_dir": "findings/",
+    "screenshots_dir": "screenshots/"
+  }
+}

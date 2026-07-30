@@ -1,0 +1,45 @@
+---
+export interface Props {
+  name: string;
+  cuisine: string;
+  rating: number;
+  priceRange: string;
+  location: string;
+  image: string;
+  href: string;
+  index?: number;
+}
+
+const { name, cuisine, rating, priceRange, location, image, href, index = 0 } = Astro.props;
+---
+
+<a
+  href={href}
+  class="group block"
+>
+  <div class="card-soft overflow-hidden bg-white shadow-tinted hover:shadow-tinted-lg transition-shadow duration-300">
+    <div class="aspect-[4/3] overflow-hidden bg-slate-100">
+      <img
+        src={image}
+        alt={name}
+        width="800" height="600" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        loading={index < 4 ? "eager" : "lazy"}
+        decoding="async"
+      />
+    </div>
+    <div class="p-5">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="text-xs font-medium text-accent-600 bg-accent-50 px-2 py-0.5 rounded-full">{cuisine}</span>
+        <span class="text-xs text-slate-400">{priceRange}</span>
+      </div>
+      <h3 class="text-lg font-semibold text-slate-900 group-hover:text-accent-600 transition-colors">{name}</h3>
+      <div class="flex items-center gap-1.5 mt-2">
+        <span class="text-sm font-medium text-slate-700">{rating}</span>
+        <span class="text-yellow-500 text-sm">
+          {"★".repeat(Math.round(rating))}
+        </span>
+      </div>
+      <p class="text-sm text-slate-500 mt-2">{location}</p>
+    </div>
+  </div>
+</a>

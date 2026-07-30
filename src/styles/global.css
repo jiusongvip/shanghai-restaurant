@@ -1,0 +1,54 @@
+@import "tailwindcss";
+@import "@fontsource/geist-sans";
+
+/* Design tokens - Slate base + Crimson accent */
+@theme {
+  --font-sans: "Geist Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+
+  --color-accent-50: #fef2f2;
+  --color-accent-100: #fee2e2;
+  --color-accent-200: #fecaca;
+  --color-accent-300: #fca5a5;
+  --color-accent-400: #f87171;
+  --color-accent-500: #ef4444;
+  --color-accent-600: #dc2626;
+  --color-accent-700: #b91c1c;
+  --color-accent-800: #991b1b;
+  --color-accent-900: #7f1d1d;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-white text-slate-900 font-sans;
+  }
+
+  ::selection {
+    @apply bg-accent-100 text-accent-900;
+  }
+}
+
+/* Soft shape - consistent 12px corners */
+@utility card-soft {
+  border-radius: 12px;
+}
+
+@utility btn-soft {
+  border-radius: 100px;
+}
+
+/* Tinted shadow for cards on light bg */
+@utility shadow-tinted {
+  box-shadow: 0 1px 3px rgb(15 23 42 / .06), 0 1px 2px rgb(15 23 42 / .04);
+}
+
+@utility shadow-tinted-lg {
+  box-shadow: 0 4px 14px rgb(15 23 42 / .08), 0 1px 3px rgb(15 23 42 / .04);
+}

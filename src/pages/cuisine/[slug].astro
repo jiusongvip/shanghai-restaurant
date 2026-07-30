@@ -1,0 +1,153 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { cuisines, featuredRestaurants } from "../../data/restaurants";
+
+export function getStaticPaths() {
+  return cuisines.map((c) => ({ params: { slug: c.slug } }));
+}
+
+const { slug } = Astro.params;
+const cuisine = cuisines.find((c) => c.slug === slug);
+if (!cuisine) return Astro.redirect("/404");
+
+const cuisineTitles: Record<string, string> = {
+  'benbang': 'Benbang Home-Style Cuisine — Shanghai Guide',
+  'xiaolongbao': 'Xiaolongbao & Dim Sum — Shanghai Guide',
+  'hairy-crab': 'Hairy Crab Season — Shanghai Dining Guide',
+  'street-food': 'Street Food Guide — Shanghai Restaurants',
+  'fine-dining': 'Fine Dining Restaurants — Shanghai Guide',
+};
+const cuisineName = cuisine ? cuisine.name.toLowerCase() : "";
+const resolvedTitle = cuisineTitles[cuisine?.slug || ''] || cuisine.name + ' — Shanghai Restaurants';
+const shortDesc = cuisine.description.length > 155 ? cuisine.description.slice(0, 152) + "..." : cuisine.description;
+const relatedRestaurants = featuredRestaurants.filter(function(rest) { return cuisineName && (rest.cuisine.toLowerCase().includes(cuisineName) || cuisineName.includes(rest.cuisine.toLowerCase())); });
+
+const cuisineContent: Record<string, { dishes: { name: string; desc: string }[]; tips: string[] }> = {
+  'benbang': {
+    dishes: [
+      { name: 'Hongshao Rou (Red Braised Pork)', desc: 'The defining Benbang dish — pork belly slow-braised in dark soy, rock sugar, and Shaoxing wine until meltingly tender with a lacquered glaze.' },
+      { name: 'Youbao Xia (Oil-Blasted River Shrimp)', desc: 'Small river shrimp flash-fried in hot oil until the shells crack and crisp, then tossed in a sweet-savory soy sauce.' },
+      { name: 'Xun Yu (Tea-Smoked Fish)', desc: 'Freshwater fish smoked over tea leaves, resulting in a fragrant, mahogany-colored exterior with tender, flaky flesh.' },
+    ],
+    tips: ['Best enjoyed at lunch when the dishes are freshest from the wok', 'Pair with steamed white rice to soak up the rich braising sauces', 'Look for restaurants in the Former French Concession for the most authentic experience'],
+  },
+  'xiaolongbao': {
+    dishes: [
+      { name: 'Classic Pork Xiaolongbao', desc: 'The original — seasoned pork filling suspended in rich broth inside a delicate wrapper with exactly 18 pleats.' },
+      { name: 'Crab Roe Xiaolongbao', desc: 'Filled with pork and topped with fresh hairy crab roe for an intensely sweet, briny flavor.' },
+      { name: 'Shengjianbao (Pan-Fried Buns)', desc: 'The xiaolongbao\'s crispy-bottomed cousin — pan-fried until golden, then steamed for a dual-texture masterpiece.' },
+    ],
+    tips: ['Eat during morning hours (6-10am) for the freshest batch', 'Nibble a hole first, sip the broth, then eat — never bite straight through', 'Bring your own vinegar and ginger if the shop doesn\'t provide it'],
+  },
+  'hairy-crab': {
+    dishes: [
+      { name: 'Steamed Whole Crab with Ginger', desc: 'The purist\'s preparation — live hairy crab steamed whole, served with black vinegar, sugar, and shredded ginger.' },
+      { name: 'Crab Roe Xiaolongbao', desc: 'Xiaolongbao filled with pork and topped with fresh hairy crab roe during peak season.' },
+      { name: 'Crab Roe Tossed Noodles', desc: 'Fresh noodles tossed in a luxurious sauce made from crab roe and meat — simple but extraordinarily flavorful.' },
+    ],
+    tips: ['Peak season is October-November when crabs are richest', 'Female crabs have firm orange roe; males offer creamy custard-like roe', 'Budget RMB 200-500 per person for a proper crab feast'],
+  },
+  'street-food': {
+    dishes: [
+      { name: 'Shengjianbao', desc: 'Pan-fried pork buns with golden-crisp bottoms, fluffy dough, and a burst of hot savory soup inside.' },
+      { name: 'Cong You Bing (Scallion Pancakes)', desc: 'Flaky, chewy, deeply aromatic flatbreads layered with fresh scallions — perfect as a snack or side.' },
+      { name: 'Ci Fan (Glutinous Rice Rolls)', desc: 'Warm glutinous rice wrapped around pork floss, youtiao, and pickled vegetables — the ultimate Shanghai breakfast.' },
+    ],
+    tips: ['Best found in longtang (lane houses) and around the City God Temple area', 'Most street food is cheapest in the early morning (6-9am)', 'Follow the lines — long queues at street stalls almost always mean exceptional food'],
+  },
+  'fine-dining': {
+    dishes: [
+      { name: 'Seasonal Tasting Menu', desc: '8-15 course journeys built around seasonal Shanghai ingredients — spring bamboo shoots, autumn hairy crab, winter braises.' },
+      { name: 'Vegetarian Tasting Menu', desc: 'Shanghai\'s Buddhist vegetarian tradition elevated to haute cuisine — mushrooms, bamboo pith, and seasonal vegetables transformed into art.' },
+      { name: 'Bund-View Dining', desc: 'World-class cuisine paired with panoramic views of the Lujiazui skyline and Huangpu River from historic Bund buildings.' },
+    ],
+    tips: ['Reserve 2-4 weeks in advance for top restaurants', 'Tasting menus typically run RMB 500-2,000+ per person', 'Request window seating when booking for the best Bund views'],
+  },
+};
+
+const content = cuisineContent[cuisine?.slug || ''] || { dishes: [], tips: [] };
+---
+
+<Layout
+  fullTitle={resolvedTitle}
+  title={cuisine.name + " Cuisine"}
+  description={shortDesc}
+>
+  <main>
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 md:pt-28 pb-12">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-6xl tracking-tighter leading-none font-semibold text-slate-900">{cuisine.name}</h1>
+        <p class="text-lg text-slate-500 mt-6 leading-relaxed max-w-[60ch]">{cuisine.description}</p>
+      </div>
+    </section>
+
+    {content.dishes.length > 0 && (
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <h2 class="text-2xl font-semibold tracking-tight text-slate-900 mb-6">Signature {cuisine.name} Dishes</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {content.dishes.map((dish) => (
+            <div class="card-soft bg-white shadow-tinted p-6">
+              <h3 class="text-lg font-semibold text-slate-900 mb-2">{dish.name}</h3>
+              <p class="text-sm text-slate-500 leading-relaxed">{dish.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {relatedRestaurants.length > 0 && (
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <h2 class="text-2xl font-semibold tracking-tight text-slate-900 mb-8">Best {cuisine.name} Restaurants</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {relatedRestaurants.map((r) => (
+            <a href={"/restaurant/" + r.slug} class="group block">
+              <div class="card-soft overflow-hidden bg-white shadow-tinted hover:shadow-tinted-lg transition-shadow duration-300">
+                <div class="aspect-[4/3] overflow-hidden bg-slate-100">
+                  <img src={r.heroImage} alt={r.name} width="800" height="600" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                </div>
+                <div class="p-5">
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="text-xs font-medium text-accent-600 bg-accent-50 px-2 py-0.5 rounded-full">{r.cuisine}</span>
+                    <span class="text-xs text-slate-400">{r.priceRange}</span>
+                  </div>
+                  <h3 class="text-lg font-semibold text-slate-900 group-hover:text-accent-600 transition-colors">{r.name}</h3>
+                  <div class="flex items-center gap-1.5 mt-2">
+                    <span class="text-sm font-medium text-slate-700">{r.rating}</span>
+                    <span class="text-yellow-500 text-sm">{"★".repeat(Math.round(r.rating))}</span>
+                  </div>
+                  <p class="text-sm text-slate-500 mt-2">{r.location}</p>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {content.tips.length > 0 && (
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <h2 class="text-2xl font-semibold tracking-tight text-slate-900 mb-6">Dining Tips</h2>
+        <ul class="space-y-3 max-w-2xl">
+          {content.tips.map((tip) => (
+            <li class="flex items-start gap-3 text-slate-600">
+              <span class="text-accent-600 mt-1 shrink-0">✓</span>
+              <span class="leading-relaxed">{tip}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pb-24">
+      <a href="/shanghai-cuisine-guide" class="text-sm font-medium text-accent-600 hover:text-accent-700">&larr; Back to Cuisine Guide</a>
+    </section>
+  </main>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": cuisine.name + " - Shanghai Cuisine Guide",
+    "description": shortDesc,
+    "url": "https://shanghai-restaurant.com/cuisine/" + cuisine.slug,
+  })} />
+</Layout>

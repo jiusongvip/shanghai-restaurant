@@ -1,0 +1,128 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+export function getStaticPaths() {
+  const posts = {
+    "shanghai-street-food-2026": {
+      title: "Shanghai Street Food: 12 Must-Try Stalls in 2026",
+      date: "2026-07-15",
+      excerpt: "From shengjianbao in the French Concession to scallion pancakes near the Bund, these are the street food stalls that define Shanghai.",
+      sections: [
+        { type: "p", text: "Shanghai’s street food scene is legendary, and 2026 is no exception. From dawn until late night, the city hums with the sizzle of woks and the aroma of freshly steamed buns." },
+        { type: "h2", text: "The Best Shengjianbao" },
+        { type: "p", text: "The French Concession remains the epicenter, with shengjianbao drawing crowds to Yang’s Fried Dumpling at all hours. These pan-fried pork buns are crispy on the bottom and juicy inside — a must-try for any visitor." },
+        { type: "h3", text: "Where to Find the Best" },
+        { type: "p", text: "Beyond Yang’s, the old town alleys hide family-run stalls that have been perfecting their recipe for generations." },
+        { type: "h2", text: "Iconic Street Staples" },
+        { type: "p", text: "Near the old town, the aroma of cong you bing (scallion pancakes) wafts through the narrow streets. The beauty of Shanghai street food is its accessibility: most dishes cost between RMB 15 and 40." },
+        { type: "h3", text: "What to Order" },
+        { type: "p", text: "Start with shengjianbao, follow with a scallion pancake, and finish with sweet douhua for the full Shanghai street food experience." },
+      ]
+    },
+    "hairy-crab-season-guide": {
+      title: "The Ultimate Guide to Hairy Crab Season in Shanghai",
+      date: "2026-07-02",
+      excerpt: "Everything you need to know about Shanghai’s most anticipated food event: when to go, where to eat, and how to order.",
+      sections: [
+        { type: "p", text: "Hairy crab season (September through December) is the most anticipated culinary event on the Shanghai calendar. These freshwater crabs are celebrated for their sweet meat and golden roe." },
+        { type: "h2", text: "Peak Season Timing" },
+        { type: "p", text: "Peak season runs from October to November, when the female crabs are bursting with roe. For the ultimate experience, book a table at Xin Rong Ji or YongFoo Elite." },
+        { type: "h3", text: "How to Order" },
+        { type: "p", text: "Know your preferences: female crabs for roe, male crabs for sweeter meat. Most restaurants offer set menus with three to six crabs per person." },
+      ]
+    },
+    "michelin-shanghai-2026": {
+      title: "Michelin Guide Shanghai 2026: All the Stars",
+      date: "2026-06-18",
+      excerpt: "A complete rundown of every Michelin-starred restaurant in Shanghai, from three-star temples to new one-star entries.",
+      sections: [
+        { type: "p", text: "The Michelin Guide Shanghai 2026 continues to cement the city’s status as one of the world’s great dining destinations. This year’s guide features over 50 starred restaurants across multiple categories." },
+        { type: "h2", text: "New Two-Star Additions" },
+        { type: "p", text: "The two-star category grew with the addition of Xin Rong Ji for its refined Taizhou and Shanghainese cuisine. This marks a significant recognition of regional Chinese cooking on the global stage." },
+        { type: "h3", text: "What to Expect" },
+        { type: "p", text: "Expect precise technique, exceptional ingredients, and dining rooms that range from opulent to intimate." },
+      ]
+    },
+    "shanghai-vs-hong-kong-dim-sum": {
+      title: "Shanghai vs Hong Kong: The Great Dim Sum Debate",
+      date: "2026-06-01",
+      excerpt: "Two great food cities, two dim sum traditions. We compare the xiaolongbao, shao mai, and wontons from both cities side by side.",
+      sections: [
+        { type: "p", text: "The dim sum rivalry between Shanghai and Hong Kong is one of the great food debates. Both cities claim mastery, but their approaches differ in fascinating ways." },
+        { type: "h2", text: "Xiaolongbao: The Key Difference" },
+        { type: "p", text: "Shanghai’s xiaolongbao are smaller, with thinner wrappers and a soupier filling compared to their Hong Kong counterparts. The wrapper delicacy is everything." },
+        { type: "h3", text: "Shao Mai Comparison" },
+        { type: "p", text: "Shao mai in Shanghai are sticky rice-based, while Hong Kong’s are packed with pork and shrimp. Both traditions are extraordinary in their own right." },
+      ]
+    },
+    "vegetarian-shanghai-guide": {
+      title: "Vegetarian Shanghai: A Plant-Based Food Guide",
+      date: "2026-05-14",
+      excerpt: "Shanghai has a rich Buddhist vegetarian tradition. From temple restaurants to modern plant-based dining, here is where to eat.",
+      sections: [
+        { type: "p", text: "Shanghai’s vegetarian scene is one of the city’s best-kept secrets, rooted in centuries of Buddhist culinary tradition. Temple restaurants and modern plant-based dining coexist beautifully." },
+        { type: "h2", text: "Temple Restaurant Tradition" },
+        { type: "p", text: "Temple restaurants like Gong De Lin serve elaborate meat-free versions of classic Shanghainese dishes, using tofu, mushrooms, and gluten to recreate textures with remarkable fidelity." },
+        { type: "h3", text: "Modern Michelin-Starred Options" },
+        { type: "p", text: "Restaurants like Fu He Hui are earning Michelin stars for innovative plant-based tasting menus that push the boundaries of vegetarian cuisine." },
+      ]
+    },
+  };
+  return Object.entries(posts).map(function (entry) {
+    var slug = entry[0];
+    var post = entry[1];
+    return { params: { slug: slug }, props: { post: post } };
+  });
+}
+
+var post = Astro.props.post;
+if (!post) return Astro.redirect("/404");
+
+var slug = Astro.params.slug;
+---
+
+<Layout
+  fullTitle={post.title} title={post.title}
+  description={post.excerpt}
+>
+  <main>
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 md:pt-28 pb-12">
+      <div class="max-w-3xl">
+        <nav class="text-sm text-slate-400 mb-6">
+          <a href="/" class="hover:text-accent-600 transition-colors">Home</a>
+          <span class="mx-2">/</span>
+          <a href="/blog" class="hover:text-accent-600 transition-colors">Blog</a>
+        </nav>
+        <time class="text-xs text-slate-400 font-medium">{post.date}</time>
+        <h1 class="text-4xl md:text-6xl tracking-tighter leading-none font-semibold text-slate-900 mt-2">{post.title}</h1>
+      </div>
+    </section>
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-24">
+      <article class="max-w-3xl">
+        <p class="text-lg text-slate-500 leading-relaxed">{post.excerpt}</p>
+        <div class="mt-8 space-y-4 text-slate-500 leading-relaxed">
+          {post.sections.map(function (s) {
+            if (s.type === "h2") return <h2 class="text-2xl font-semibold text-slate-900 mt-8 mb-3">{s.text}</h2>;
+            if (s.type === "h3") return <h3 class="text-xl font-semibold text-slate-800 mt-6 mb-2">{s.text}</h3>;
+            return <p>{s.text}</p>;
+          })}
+        </div>
+        <div class="mt-12 pt-8 border-t border-slate-100">
+          <a href="/blog" class="text-sm font-medium text-accent-600 hover:text-accent-700">&larr; Back to Blog</a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "description": post.excerpt,
+    "datePublished": post.date,
+    "dateModified": post.date,
+    "url": "https://shanghai-restaurant.com/blog/" + slug,
+    "author": { "@type": "Person", "name": "Li Wei" },
+    "publisher": { "@type": "Organization", "name": "Best Shanghai Restaurants", "url": "https://shanghai-restaurant.com" },
+  })} />
+</Layout>

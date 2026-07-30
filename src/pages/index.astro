@@ -1,0 +1,92 @@
+---
+import Layout from "../layouts/Layout.astro";
+import RestaurantCard from "../components/RestaurantCard.astro";
+import CuisineCard from "../components/CuisineCard.astro";
+import Faq from "../components/Faq.astro";
+import { featuredRestaurants, cuisines, cities, faqs } from "../data/restaurants";
+---
+
+<Layout
+  title="Best Shanghai Restaurants Near You"
+  fullTitle="Best Shanghai Restaurants — Curated Dining Guide"
+  description="Discover top-rated Shanghai restaurants with our expert-curated guide to authentic cuisine, xiaolongbao, dim sum, and fine dining experiences near you."
+  ogImage="https://shanghai-restaurant.com/images/photo-1551218808-94e220e084d2.webp"
+>
+  <main>
+    <!-- Hero -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 md:pt-28 pb-16">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-6xl tracking-tighter leading-none font-semibold text-slate-900">The Best Shanghai Restaurants &amp; Authentic Shanghai Cuisine</h1>
+        <p class="text-lg md:text-xl text-slate-500 mt-6 leading-relaxed max-w-[60ch]">Expert-curated guide to the finest Shanghai restaurants worldwide. From legendary xiaolongbao shops to Michelin-starred fine dining, discover authentic Shanghainese cuisine.</p>
+        <div class="flex flex-wrap gap-3 mt-8">
+          <a href="/best-shanghai-restaurants" class="btn-soft bg-accent-600 hover:bg-accent-700 text-white text-sm font-medium px-6 py-3 transition-colors inline-flex items-center gap-2">Explore Best Restaurants<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class aria-hidden="true"><path d="M3 12h18M15 6l6 6-6 6"></path></svg></a>
+          <a href="/shanghai-cuisine-guide" class="btn-soft bg-slate-100 hover:bg-slate-200 text-slate-900 text-sm font-medium px-6 py-3 transition-colors">Read Cuisine Guide</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Restaurants -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+      <div class="flex items-end justify-between mb-10">
+        <div>
+          <h2 class="text-2xl md:text-3xl tracking-tight font-semibold text-slate-900">Top Picks</h2>
+          <p class="text-slate-500 mt-2">Our favorite Shanghai restaurants right now</p>
+        </div>
+        <a href="/best-shanghai-restaurants" class="hidden sm:inline-flex text-sm font-medium text-accent-600 hover:text-accent-700">View all &rarr;</a>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {featuredRestaurants.map((r, i) => (
+          <RestaurantCard
+            name={r.name}
+            cuisine={r.cuisine}
+            rating={r.rating}
+            priceRange={r.priceRange}
+            location={r.location}
+            image={r.heroImage}
+            href={`/restaurant/${r.slug}`}
+            index={i}
+          />
+        ))}
+      </div>
+    </section>
+
+    <!-- Cuisine Categories -->
+    <section class="bg-slate-50 py-16 md:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl mb-10">
+          <h2 class="text-2xl md:text-3xl tracking-tight font-semibold text-slate-900">Explore by Cuisine</h2>
+          <p class="text-slate-500 mt-2">Dive into the rich traditions of Shanghai cooking</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {cuisines.map((c) => (
+            <CuisineCard name={c.name} description={c.description} href={`/cuisine/${c.slug}`} />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Cities -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+      <div class="max-w-2xl mb-10">
+        <h2 class="text-2xl md:text-3xl tracking-tight font-semibold text-slate-900">Shanghai Restaurants Near You</h2>
+        <p class="text-slate-500 mt-2">Find authentic Shanghai restaurants in cities worldwide</p>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {cities.map((c) => (
+          <a href={`/shanghai-restaurant-${c.slug}`} class="card-soft bg-white border border-slate-100 p-6 hover:border-accent-200 hover:bg-accent-50/30 transition-all duration-300 group">
+            <h3 class="text-lg font-semibold text-slate-900 group-hover:text-accent-600 transition-colors">{c.name}</h3>
+            <p class="text-sm text-slate-400 mt-1">{c.count} restaurants</p>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="bg-slate-50 py-16 md:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl md:text-3xl tracking-tight font-semibold text-slate-900 mb-10">Frequently Asked Questions</h2>
+        <Faq items={faqs} schema={true} />
+      </div>
+    </section>
+  </main>
+</Layout>

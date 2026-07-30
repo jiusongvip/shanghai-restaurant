@@ -1,0 +1,34 @@
+---
+import CitySchema from "../../components/CitySchema.astro";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout
+  fullTitle="Best Shanghai Restaurants in Sydney — Top Picks"
+  description="Discover the best Shanghai restaurants in Sydney. 11 top-rated spots for xiaolongbao, dim sum, and authentic Shanghainese cuisine."
+  hreflang={[{ lang: "en-au", href: "https://shanghai-restaurant.com/shanghai-restaurant-sydney" }]}
+>
+  <main>
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 md:pt-28 pb-12">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-6xl tracking-tighter leading-none font-semibold text-slate-900">
+          Shanghai Restaurants in Sydney
+        </h1>
+        <p class="text-lg text-slate-500 mt-6 leading-relaxed max-w-[60ch]">
+          Sydney's Shanghai restaurants reflect the city's deep ties to Asia. From Haymarket to Chatswood, authentic Shanghainese kitchens serve xiaolongbao, shengjianbao, and hongshao rou that would impress even the most discerning Shanghai native.
+        </p>
+      </div>
+    </section>
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pb-24">
+      <h2 class="text-2xl font-semibold text-slate-900 mb-6">Featured Listings</h2>
+      <div class="card-soft bg-slate-50 p-8 md:p-12 text-center">
+        <h3 class="text-xl text-slate-600 font-medium">11 Shanghai Restaurants</h3>
+        <p class="text-slate-500 mt-2">Our full Sydney guide is coming soon with detailed reviews, menus, and photos.</p>
+        <div class="mt-6">
+          <a href="/best-shanghai-restaurants" class="btn-soft bg-accent-600 hover:bg-accent-700 text-white text-sm font-medium px-6 py-3 transition-colors inline-flex items-center gap-2">Browse All Restaurants</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <CitySchema city="Sydney" count={11} slug="sydney" />
+</Layout>

@@ -1,0 +1,46 @@
+---
+import Icon from "./Icon.astro";
+import type { faqs } from "../data/restaurants";
+
+export interface Props {
+  items: { q: string; a: string }[];
+  schema?: boolean;
+}
+
+const { items, schema = false } = Astro.props;
+---
+
+<div class="max-w-3xl space-y-6">
+  {
+    items.map((item, i) => (
+      <details class="group border-b border-slate-100 pb-6" open={i === 0}>
+        <summary class="flex items-center justify-between cursor-pointer text-lg font-medium text-slate-900 hover:text-accent-600 transition-colors list-none">
+          {item.q}
+          <span class="text-slate-400 group-open:rotate-180 transition-transform ml-4 shrink-0">
+            <Icon name="caret-down" size={16} />
+          </span>
+        </summary>
+        <p class="text-slate-500 leading-relaxed mt-3">
+          {item.a}
+        </p>
+      </details>
+    ))
+  }
+</div>
+
+{
+  schema && (
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": items.map((item) => ({
+        "@type": "Question",
+        "name": item.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": item.a,
+        },
+      })),
+    })} />
+  )
+}

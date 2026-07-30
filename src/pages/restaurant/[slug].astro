@@ -1,0 +1,92 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { allRestaurants } from "../../data/restaurants";
+
+export function getStaticPaths() {
+  return allRestaurants.map((r) => ({ params: { slug: r.slug } }));
+}
+
+const { slug } = Astro.params;
+const restaurant = allRestaurants.find((r) => r.slug === slug);
+if (!restaurant) return Astro.redirect("/404");
+const restaurantTitle = restaurant.name.length < 12
+  ? restaurant.name + " — Shanghai Restaurant Review & Guide"
+  : restaurant.name + " — Shanghai Restaurant Review";
+---
+
+<Layout
+  fullTitle={restaurantTitle}
+  description={restaurant.description}
+>
+  <main>
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 md:pt-28 pb-12">
+      <nav class="text-sm text-slate-400 mb-6">
+        <a href="/" class="hover:text-accent-600 transition-colors">Home</a>
+        <span class="mx-2">/</span>
+        <a href="/best-shanghai-restaurants" class="hover:text-accent-600 transition-colors">Best Restaurants</a>
+        <span class="mx-2">/</span>
+        <span class="text-slate-600">{restaurant.name}</span>
+      </nav>
+      <div class="max-w-3xl">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-xs font-medium text-accent-600 bg-accent-50 px-2.5 py-1 rounded-full">{restaurant.cuisine}</span>
+          <span class="text-xs text-slate-400">{restaurant.priceRange}</span>
+        </div>
+        <h1 class="text-4xl md:text-6xl tracking-tighter leading-none font-semibold text-slate-900">{restaurant.name}</h1>
+        <div class="flex items-center gap-2 mt-4">
+          <span class="text-lg font-semibold text-slate-700">{restaurant.rating}</span>
+          <span class="text-yellow-500 text-lg">{"★".repeat(Math.round(restaurant.rating))}</span>
+          <span class="text-slate-400 text-sm ml-2">{restaurant.location}</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="aspect-[16/9] rounded-card overflow-hidden bg-slate-100 mb-10">
+        <img src={restaurant.heroImage} alt={restaurant.name} class="w-full h-full object-cover" loading="eager" decoding="async" />
+      </div>
+      <div class="max-w-3xl">
+        <p class="text-lg text-slate-500 leading-relaxed">{restaurant.description}</p>
+      </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <h2 class="text-2xl font-semibold tracking-tight text-slate-900 mb-6">Signature Dishes</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {restaurant.dishes.map((dish) => (
+          <div class="card-soft bg-slate-50 p-5">
+            <h3 class="text-slate-900 font-medium text-base">{dish}</h3>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <h2 class="text-2xl font-semibold tracking-tight text-slate-900 mb-6">Best For</h2>
+      <div class="flex flex-wrap gap-3">
+        {restaurant.bestFor.map((tag) => (
+          <span class="text-sm px-4 py-2 card-soft bg-white border border-slate-100 text-slate-600">{tag}</span>
+        ))}
+      </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pb-24">
+      <a href="/best-shanghai-restaurants" class="text-sm font-medium text-accent-600 hover:text-accent-700">&larr; Back to all restaurants</a>
+    </section>
+  </main>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": restaurant.name,
+    "description": restaurant.description,
+    "servesCuisine": restaurant.cuisine,
+    "priceRange": restaurant.priceRange,
+    "image": { "@type": "ImageObject", "url": "https://shanghai-restaurant.com" + restaurant.heroImage, "caption": restaurant.name + " - Shanghai Restaurant" },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": restaurant.rating,
+      "bestRating": 5,
+    },
+  })} />
+</Layout>

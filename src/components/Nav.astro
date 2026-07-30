@@ -1,0 +1,74 @@
+---
+import Icon from "./Icon.astro";
+
+const navLinks = [
+  { href: "/best-shanghai-restaurants", label: "Best Restaurants" },
+  { href: "/shanghai-cuisine-guide", label: "Cuisine Guide" },
+  { href: "/shanghai-restaurant-menu", label: "Menu" },
+  { href: "/blog", label: "Blog" },
+  { href: "/about", label: "About" },
+];
+---
+
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <a href="/" class="text-lg font-semibold tracking-tight text-slate-900 hover:text-accent-600 transition-colors shrink-0">
+      Shanghai<span class="text-accent-600">Restaurant</span>
+    </a>
+
+    <div class="hidden md:flex items-center gap-8" id="desktop-menu">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="text-sm text-slate-600 hover:text-slate-900 transition-colors"
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+
+    <div class="flex items-center gap-4">
+      <a
+        href="/best-shanghai-restaurants"
+        class="hidden sm:inline-flex btn-soft bg-accent-600 hover:bg-accent-700 text-white text-sm font-medium px-5 py-2 transition-colors items-center gap-1.5"
+      >
+        Find Restaurants
+        <Icon name="arrow-right" size={16} />
+      </a>
+      <button class="md:hidden text-slate-700 p-1" aria-label="Menu" id="menu-toggle">
+        <Icon name="list" size={22} />
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-slate-100 bg-white/95 backdrop-blur-md">
+    <div class="px-4 py-3 space-y-1">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="block py-2.5 text-sm text-slate-600 hover:text-slate-900 transition-colors"
+        >
+          {link.label}
+        </a>
+      ))}
+      <a
+        href="/best-shanghai-restaurants"
+        class="block py-2.5 text-sm font-medium text-accent-600 hover:text-accent-700 transition-colors"
+      >
+        Find Restaurants
+      </a>
+    </div>
+  </div>
+<noscript><style>#mobile-menu{display:block!important}</style></noscript>
+</header>
+
+<script>
+  var toggle = document.getElementById("menu-toggle");
+  var menu = document.getElementById("mobile-menu");
+  if (toggle && menu) {
+    toggle.addEventListener("click", function () {
+      menu.classList.toggle("hidden");
+    });
+  }
+</script>

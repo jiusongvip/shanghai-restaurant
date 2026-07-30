@@ -1,0 +1,75 @@
+---
+import ArticleSchema from "../components/ArticleSchema.astro";
+import Layout from "../layouts/Layout.astro";
+import Faq from "../components/Faq.astro";
+
+const dishes = [
+  { name: "Xiaolongbao", en: "Soup Dumplings", desc: "Delicate steamed dumplings filled with pork and a rich, savory broth. The hallmark of Shanghai cuisine.", image: "/images/photo-1582450871972-ab5ca72a1f7a.webp" },
+  { name: "Shengjianbao", en: "Pan-Fried Pork Buns", desc: "Crispy-bottomed buns filled with juicy pork and piping hot broth. A Shanghai street food essential.", image: "/images/photo-1496116218417-1a781b1c416c.webp" },
+  { name: "Hongshao Rou", en: "Red Braised Pork", desc: "Pork belly slowly braised in soy sauce, sugar, and spices until meltingly tender. The soul of Benbang cooking.", image: "/images/photo-1504674900247-0877df9cc836.webp" },
+  { name: "Yan Du Xian", en: "Bamboo Shoot and Pork Soup", desc: "A springtime Shanghai classic combining fresh bamboo shoots, cured pork, and tofu skin in a milky broth.", image: "/images/photo-1547592166-23ac45744acd.webp" },
+  { name: "Hairy Crab", en: "Da Zha Xie", desc: "Shanghai''s most prized seasonal delicacy. Steamed whole and served with ginger vinegar for dipping.", image: "/images/photo-1565557623262-b51c2513a641.webp" },
+  { name: "Cong You Bing", en: "Scallion Pancake", desc: "Flaky, layered flatbread studded with fresh scallions and pan-fried until golden and crisp.", image: "/images/photo-1563379926898-05f4575a45d8.webp" },
+  { name: "Smoked Fish", en: "Xun Yu", desc: "Fish marinated in soy and spices, then smoked and served cold as a classic Shanghainese appetizer.", image: "/images/photo-1534604973900-c43ab4c2e0ab.webp" },
+  { name: "Crab Roe Tofu", en: "Xie Fen Dou Fu", desc: "Silky tofu stir-fried with golden crab roe and crab meat. A luxurious yet comforting dish.", image: "/images/photo-1551218808-94e220e084d2.webp" },
+  { name: "Eight-Treasure Duck", en: "Ba Bao Ya", desc: "Whole duck stuffed with glutinous rice and eight treasures, then braised until the meat falls off the bone.", image: "/images/photo-1414235077428-338989a2e8c0.webp" },
+  { name: "Drunken Chicken", en: "Zui Ji", desc: "Poached chicken marinated in Shaoxing wine. Tender, fragrant, and served cold as a starter.", image: "/images/photo-1598515214211-89d3c73ae83b.webp" },
+];
+
+const faqsCuisine = [
+  { q: "What makes Shanghai cuisine unique?", a: "Shanghai cuisine, or Benbang, is characterized by its sweet-savory balance, liberal use of soy sauce and sugar, and an emphasis on freshness. The cooking tends toward braising, steaming, and quick stir-frying, with seafood playing a starring role." },
+  { q: "How is Shanghainese food different from other Chinese cuisines?", a: "Unlike the fiery heat of Sichuan or the bold spice of Hunan, Shanghainese food is subtle and refined. It favors sweetness and umami over heat, and oil-rich, soy-braised dishes are central to the cuisine." },
+  { q: "What is the most famous Shanghai dish?", a: "Xiaolongbao (soup dumplings) are unquestionably Shanghai''s most famous culinary export. These delicate steamed dumplings are filled with pork and a savory aspic that melts into broth when cooked." },
+];
+---
+
+<Layout
+  fullTitle="Shanghai Cuisine Guide — Best Shanghai Restaurants"
+  title="Shanghai Cuisine Guide: 20 Must-Try Dishes"
+  description="Complete guide to Shanghai cuisine - from xiaolongbao to red braised pork. Learn about Shanghainese food, must-try dishes, and the best Shanghai restaurants."
+>
+
+  <main>
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 md:pt-28 pb-12">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-6xl tracking-tighter leading-none font-semibold text-slate-900">
+          Shanghai Cuisine: The Ultimate Food Lover's Guide
+        </h1>
+        <p class="text-lg text-slate-500 mt-6 leading-relaxed max-w-[60ch]">
+          From the delicate folds of xiaolongbao to the rich, caramelized depths of hongshao rou, Shanghai cuisine is a world of flavor waiting to be explored. Here is your complete guide to the dishes, traditions, and restaurants that define it.
+        </p>
+      </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <h2 class="text-2xl md:text-3xl tracking-tight font-semibold text-slate-900 mb-8">Must-Try Shanghai Dishes</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {dishes.map((dish) => (
+          <div class="card-soft overflow-hidden bg-white shadow-tinted hover:shadow-tinted-lg transition-shadow duration-300 flex flex-col sm:flex-row">
+            <div class="sm:w-48 shrink-0 h-48 sm:h-full overflow-hidden bg-slate-100">
+              <img src={dish.image} alt={dish.name} loading="lazy" decoding="async" class="w-full h-full object-cover" />
+            </div>
+            <div class="p-5 flex flex-col justify-center">
+              <h3 class="text-lg font-semibold text-slate-900">{dish.name}</h3>
+              <p class="text-sm text-slate-400 font-medium">{dish.en}</p>
+              <p class="text-sm text-slate-500 mt-2 leading-relaxed">{dish.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="bg-slate-50 py-16 md:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl md:text-3xl tracking-tight font-semibold text-slate-900 mb-10">Shanghai Cuisine FAQ</h2>
+        <Faq items={faqsCuisine} />
+      </div>
+    </section>
+  </main>
+
+  <ArticleSchema
+    headline="Shanghai Cuisine: The Ultimate Food Lover's Guide"
+    description="Complete guide to Shanghai cuisine"
+    url="https://shanghai-restaurant.com/shanghai-cuisine-guide"
+  />
+</Layout>

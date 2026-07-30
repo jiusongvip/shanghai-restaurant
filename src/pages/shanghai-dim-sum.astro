@@ -1,0 +1,36 @@
+---
+import ArticleSchema from "../components/ArticleSchema.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  fullTitle="Shanghai Dim Sum: Best Restaurants & Guide"
+  description="Discover the best Shanghai dim sum restaurants. From classic xiaolongbao to shao mai and wontons, explore Shanghai''s vibrant dim sum culture."
+>
+  <main>
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 md:pt-28 pb-12">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-6xl tracking-tighter leading-none font-semibold text-slate-900">Shanghai Dim Sum: A Morning Ritual</h1>
+        <p class="text-lg text-slate-500 mt-6 leading-relaxed max-w-[60ch]">Shanghai dim sum is more than a meal; it is a cherished morning ritual. Steaming baskets of xiaolongbao, delicate shao mai, and silky wontons define the city''s food culture.</p>
+      </div>
+    </section>
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="card-soft bg-white shadow-tinted p-6"><h3 class="font-semibold text-slate-900 mb-2">Xiaolongbao</h3><p class="text-sm text-slate-500 leading-relaxed">The king of Shanghai dim sum. Thin-skinned, broth-filled, and folded with surgical precision. Best eaten fresh from the steamer.</p></div>
+        <div class="card-soft bg-white shadow-tinted p-6"><h3 class="font-semibold text-slate-900 mb-2">Shao Mai</h3><p class="text-sm text-slate-500 leading-relaxed">Open-topped dumplings with sticky rice and pork filling. Heartier than xiaolongbao and a dim sum staple across Shanghai.</p></div>
+        <div class="card-soft bg-white shadow-tinted p-6"><h3 class="font-semibold text-slate-900 mb-2">Wontons</h3><p class="text-sm text-slate-500 leading-relaxed">Served in soup or dressed in chili oil. Small wontons are a breakfast favorite; large ones make a satisfying lunch.</p></div>
+        <div class="card-soft bg-white shadow-tinted p-6"><h3 class="font-semibold text-slate-900 mb-2">Guotie</h3><p class="text-sm text-slate-500 leading-relaxed">Potstickers with a golden, crispy base and juicy pork filling. Pan-fried then steamed to perfection.</p></div>
+        <div class="card-soft bg-white shadow-tinted p-6"><h3 class="font-semibold text-slate-900 mb-2">Dou Hua</h3><p class="text-sm text-slate-500 leading-relaxed">Silky tofu pudding served sweet or savory. A classic dim sum dessert with ginger syrup or soy sauce.</p></div>
+        <div class="card-soft bg-white shadow-tinted p-6"><h3 class="font-semibold text-slate-900 mb-2">Tangyuan</h3><p class="text-sm text-slate-500 leading-relaxed">Glutinous rice balls filled with sweet black sesame or red bean paste, floating in fermented rice soup.</p></div>
+      </div>
+      <div class="mt-10">
+        <a href="/best-shanghai-restaurants" class="btn-soft bg-accent-600 hover:bg-accent-700 text-white text-sm font-medium px-6 py-3 transition-colors inline-flex items-center gap-2">Find Dim Sum Restaurants</a>
+      </div>
+    </section>
+  </main>
+  <ArticleSchema
+    headline="Shanghai Dim Sum: A Morning Ritual"
+    description="Discover the best Shanghai dim sum restaurants"
+    url="https://shanghai-restaurant.com/shanghai-dim-sum"
+  />
+</Layout>

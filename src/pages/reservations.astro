@@ -1,0 +1,42 @@
+---
+import ArticleSchema from "../components/ArticleSchema.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  fullTitle="Shanghai Restaurant Reservations: Booking Guide"
+  description="Guide to Shanghai restaurant reservations. Learn how to book tables at top Shanghai restaurants, when to reserve, and tips for getting into the most popular spots."
+>
+  <main>
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 md:pt-28 pb-12">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-6xl tracking-tighter leading-none font-semibold text-slate-900">Book Your Shanghai Restaurant Experience</h1>
+        <p class="text-lg text-slate-500 mt-6 leading-relaxed max-w-[60ch]">Securing a table at Shanghai''s best restaurants can be competitive. Here is how to navigate the reservation landscape like a pro.</p>
+      </div>
+    </section>
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="max-w-3xl space-y-8">
+        <div class="card-soft bg-white shadow-tinted p-6">
+          <h3 class="font-semibold text-slate-900 mb-2">When to Book</h3>
+          <p class="text-sm text-slate-500 leading-relaxed">Michelin-starred restaurants: 2-4 weeks ahead. Popular casual spots: 3-7 days. Weekends and holidays: add 1-2 extra weeks. Hairy crab season (Sep-Dec): book as early as possible.</p>
+        </div>
+        <div class="card-soft bg-white shadow-tinted p-6">
+          <h3 class="font-semibold text-slate-900 mb-2">How to Book</h3>
+          <p class="text-sm text-slate-500 leading-relaxed">Most restaurants accept bookings via Dianping, Meituan, or direct phone calls. International visitors can use Chope or email the restaurant directly. Some high-end spots require a deposit.</p>
+        </div>
+        <div class="card-soft bg-white shadow-tinted p-6">
+          <h3 class="font-semibold text-slate-900 mb-2">Walk-In Strategy</h3>
+          <p class="text-sm text-slate-500 leading-relaxed">For no-reservation spots like Jia Jia Tang Bao, arrive 15-30 minutes before opening. Lunch rush is 11:30-13:00; dinner is 18:00-20:00. Avoid peak times for shorter waits.</p>
+        </div>
+      </div>
+      <div class="mt-10">
+        <a href="/best-shanghai-restaurants" class="btn-soft bg-accent-600 hover:bg-accent-700 text-white text-sm font-medium px-6 py-3 transition-colors inline-flex items-center gap-2">Browse Top Shanghai Restaurants</a>
+      </div>
+    </section>
+  </main>
+  <ArticleSchema
+    headline="Book Your Shanghai Restaurant Experience"
+    description="Guide to Shanghai restaurant reservations"
+    url="https://shanghai-restaurant.com/reservations"
+  />
+</Layout>

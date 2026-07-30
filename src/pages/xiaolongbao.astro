@@ -1,0 +1,48 @@
+---
+import ArticleSchema from "../components/ArticleSchema.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  fullTitle="Xiaolongbao: Shanghai Soup Dumpling Guide"
+  description="Everything about Shanghai xiaolongbao - the history, how to eat them, the best xiaolongbao restaurants, and what makes these soup dumplings so special."
+>
+  <main>
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 md:pt-28 pb-12">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-6xl tracking-tighter leading-none font-semibold text-slate-900">Xiaolongbao: Shanghai''s Soup Dumpling Masterpiece</h1>
+        <p class="text-lg text-slate-500 mt-6 leading-relaxed max-w-[60ch]">Xiaolongbao are the undisputed icons of Shanghai cuisine. Each delicate dumpling holds a secret: a spoonful of rich, savory broth that bursts forth with the first bite.</p>
+      </div>
+    </section>
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="max-w-3xl prose prose-slate">
+        <h2 class="text-2xl font-semibold tracking-tight text-slate-900 mb-4">What Makes Xiaolongbao Special</h2>
+        <p class="text-slate-500 leading-relaxed">Xiaolongbao (small steamer buns) are steamed dumplings traditionally filled with pork and a rich aspic that melts into hot broth during cooking. The wrapper is thin but strong enough to hold the soup without breaking. Each dumpling is traditionally folded with at least 18 pleats.</p>
+
+        <h2 class="text-2xl font-semibold tracking-tight text-slate-900 mt-10 mb-4">How to Eat Xiaolongbao</h2>
+        <ol class="list-decimal list-inside text-slate-500 leading-relaxed space-y-3">
+          <li><strong>Pick it up gently</strong> with chopsticks at the topknot.</li>
+          <li><strong>Dip it</strong> in black vinegar with ginger slivers.</li>
+          <li><strong>Place it on your spoon</strong> and poke a small hole to release steam.</li>
+          <li><strong>Sip the broth</strong> from the spoon enjoying the pure essence.</li>
+          <li><strong>Eat the dumpling</strong> with more vinegar. Never bite it whole!</li>
+        </ol>
+
+        <h2 class="text-2xl font-semibold tracking-tight text-slate-900 mt-10 mb-4">The Best Xiaolongbao in Shanghai</h2>
+        <p class="text-slate-500 leading-relaxed">Jia Jia Tang Bao is the legend: crab roe xiaolongbao that locals queue an hour for. Din Tai Fung brings Taiwanese precision with exactly 18 folds per dumpling. Nanxiang Steamed Bun Restaurant in the City God Temple is the historic original, serving since 1900.</p>
+
+        <div class="mt-10">
+          <a href="/best-shanghai-restaurants" class="btn-soft bg-accent-600 hover:bg-accent-700 text-white text-sm font-medium px-6 py-3 transition-colors inline-flex items-center gap-2">
+            Find the Best Xiaolongbao Near You
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <ArticleSchema
+    headline="Xiaolongbao: Shanghai's Soup Dumpling Masterpiece"
+    description="Everything about Shanghai xiaolongbao"
+    url="https://shanghai-restaurant.com/xiaolongbao"
+  />
+</Layout>

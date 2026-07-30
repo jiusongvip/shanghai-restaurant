@@ -1,0 +1,28 @@
+---
+export interface Props {
+  headline: string;
+  description: string;
+  url: string;
+  datePublished?: string;
+}
+
+const { headline, description, url, datePublished = "2026-07-29" } = Astro.props;
+---
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline,
+  description,
+  url,
+  datePublished,
+  author: {
+    "@type": "Person",
+    name: "Li Wei",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "Best Shanghai Restaurants",
+    url: "https://shanghai-restaurant.com",
+  },
+})} />
