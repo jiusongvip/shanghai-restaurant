@@ -272,6 +272,36 @@ export const topDishes: TopDish[] = [
     howToEat: "Served cold as an appetizer. Let it sit at room temperature for 5 minutes before eating — the wine aroma intensifies.",
     priceRange: "¥50–80",
   },
+  {
+    icon: "🦐",
+    nameEn: "Oil-Blasted River Shrimp",
+    nameZh: "油爆虾",
+    slug: "you-bao-xia",
+    description: "Tiny freshwater shrimp flash-fried at blazing heat until shells shatter-crisp, then tossed in a glossy soy-and-sugar reduction. The quintessential Benbang appetizer.",
+    bestRestaurant: "old-jesse",
+    howToEat: "Eat whole — shells and all. The crunch is the point. Pair with cold beer or warm Shaoxing wine.",
+    priceRange: "¥80–120",
+  },
+  {
+    icon: "🐟",
+    nameEn: "Shanghai Smoked Fish",
+    nameZh: "熏鱼",
+    slug: "xun-yu",
+    description: "Grass carp steaks fried to a deep bronze, then steeped in a sweet-savory soy marinade until every fiber absorbs the sauce. Served cold — a Shanghainese household staple.",
+    bestRestaurant: "ren-he-guan",
+    howToEat: "Served cold as part of the appetizer spread. The bones soften during frying — most are edible. Great with congee or as a beer snack.",
+    priceRange: "¥40–60",
+  },
+  {
+    icon: "🐍",
+    nameEn: "Sizzling Shredded Eel",
+    nameZh: "响油鳝丝",
+    slug: "xiang-you-shan-si",
+    description: "Silky shredded eel in a dark, glossy sauce, finished tableside with a pour of smoking-hot oil that sizzles dramatically — pure Benbang theater and flavor.",
+    bestRestaurant: "ren-he-guan",
+    howToEat: "Eat immediately while sizzling. Mix the eel with the aromatic oil. Best over steamed rice to catch every drop of sauce.",
+    priceRange: "¥80–120",
+  },
 ];
 
 export const diningTips: DiningTip[] = [
