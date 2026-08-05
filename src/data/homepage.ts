@@ -338,12 +338,8 @@ export const diningTips: DiningTip[] = [
 ];
 
 export const quickAccess: QuickAccess[] = [
-  { icon: "🍜", label: "Local Food", href: "#dishes" },
-  { icon: "⭐", label: "Michelin", href: "#situations" },
-  { icon: "❤️", label: "Romantic", href: "#situations" },
-  { icon: "👨‍👩‍👧", label: "Family", href: "#situations" },
-  { icon: "💰", label: "Budget", href: "#situations" },
-  { icon: "📍", label: "The Bund", href: "#districts" },
-  { icon: "🥟", label: "Xiaolongbao", href: "#dishes" },
-  { icon: "🌃", label: "Rooftop", href: "#attractions" },
+  { icon: "🍜", label: "Must-Try Dishes", href: "#dishes" },
+  { icon: "🎯", label: "By Occasion", href: "#situations" },
+  { icon: "📍", label: "By District", href: "#districts" },
+  { icon: "📝", label: "Dining Tips", href: "#tips" },
 ];
