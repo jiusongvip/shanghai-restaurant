@@ -1,92 +1,260 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import RestaurantCard from "../components/RestaurantCard.astro";
-import CuisineCard from "../components/CuisineCard.astro";
 import Faq from "../components/Faq.astro";
-import { featuredRestaurants, cuisines, cities, faqs } from "../data/restaurants";
+import { featuredRestaurants, allRestaurants, cuisines, faqs } from "../data/restaurants";
+import { situations, districts, attractionDining, topDishes, diningTips, quickAccess } from "../data/homepage";
+
+const restaurantBySlug = Object.fromEntries(allRestaurants.map(r => [r.slug, r]));
 ---
 
 <Layout
-  title="Best Shanghai Restaurants Near You"
-  fullTitle="Best Shanghai Restaurants — Curated Dining Guide"
-  description="Discover top-rated Shanghai restaurants with our expert-curated guide to authentic cuisine, xiaolongbao, dim sum, and fine dining experiences near you."
+  title="Shanghai Restaurant Guide"
+  fullTitle="Shanghai Restaurant Guide | Best Restaurants, Local Food & Dining Tips for International Travelers"
+  description="Discover the best restaurants in Shanghai — must-try local dishes, dining near top attractions, and practical tips for international travelers. Find where to eat by district, cuisine, budget, and occasion."
   ogImage="https://shanghai-restaurant.com/images/photo-1551218808-94e220e084d2.webp"
 >
-  <main>
-    <!-- Hero -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 md:pt-28 pb-16">
-      <div class="max-w-3xl">
-        <h1 class="text-4xl md:text-6xl tracking-tighter leading-none font-semibold text-slate-900">The Best Shanghai Restaurants &amp; Authentic Shanghai Cuisine</h1>
-        <p class="text-lg md:text-xl text-slate-500 mt-6 leading-relaxed max-w-[60ch]">Expert-curated guide to the finest Shanghai restaurants worldwide. From legendary xiaolongbao shops to Michelin-starred fine dining, discover authentic Shanghainese cuisine.</p>
-        <div class="flex flex-wrap gap-3 mt-8">
-          <a href="/best-shanghai-restaurants" class="btn-soft bg-accent-600 hover:bg-accent-700 text-white text-sm font-medium px-6 py-3 transition-colors inline-flex items-center gap-2">Explore Best Restaurants<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class aria-hidden="true"><path d="M3 12h18M15 6l6 6-6 6"></path></svg></a>
-          <a href="/shanghai-cuisine-guide" class="btn-soft bg-slate-100 hover:bg-slate-200 text-slate-900 text-sm font-medium px-6 py-3 transition-colors">Read Cuisine Guide</a>
-        </div>
-      </div>
-    </section>
 
-    <!-- Featured Restaurants -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-      <div class="flex items-end justify-between mb-10">
-        <div>
-          <h2 class="text-2xl md:text-3xl tracking-tight font-semibold text-slate-900">Top Picks</h2>
-          <p class="text-slate-500 mt-2">Our favorite Shanghai restaurants right now</p>
-        </div>
-        <a href="/best-shanghai-restaurants" class="hidden sm:inline-flex text-sm font-medium text-accent-600 hover:text-accent-700">View all &rarr;</a>
+<main>
+  <!-- ===== HERO ===== -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 md:pt-32 pb-12 md:pb-20">
+    <div class="max-w-3xl">
+      <h1 class="text-4xl md:text-6xl lg:text-7xl tracking-tighter leading-none font-semibold text-slate-900">
+        Shanghai Restaurant Guide
+      </h1>
+      <p class="text-lg md:text-xl text-slate-500 mt-5 leading-relaxed max-w-[56ch]">
+        Find the best restaurants in Shanghai by district, cuisine, budget, and travel style. Built for international travelers who want to eat well without speaking Chinese.
+      </p>
+      <div class="flex items-center gap-4 mt-4 text-sm text-slate-400">
+        <span class="flex items-center gap-1.5">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Updated August 2026
+        </span>
+        <span class="text-slate-300">·</span>
+        <span>Hand-picked from 100+ restaurants</span>
+        <span class="text-slate-300">·</span>
+        <span>Curated for international travelers</span>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {featuredRestaurants.map((r, i) => (
-          <RestaurantCard
-            name={r.name}
-            cuisine={r.cuisine}
-            rating={r.rating}
-            priceRange={r.priceRange}
-            location={r.location}
-            image={r.heroImage}
-            href={`/restaurant/${r.slug}`}
-            index={i}
-          />
-        ))}
+      <div class="flex flex-wrap gap-3 mt-8">
+        <a href="#local-favorites" class="btn-soft bg-accent-600 hover:bg-accent-700 text-white text-sm font-medium px-6 py-3 transition-colors inline-flex items-center gap-2">
+          Explore Restaurants
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h18M15 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#dishes" class="btn-soft bg-slate-100 hover:bg-slate-200 text-slate-900 text-sm font-medium px-6 py-3 transition-colors">
+          Must-Try Dishes
+        </a>
       </div>
-    </section>
 
-    <!-- Cuisine Categories -->
-    <section class="bg-slate-50 py-16 md:py-24">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-2xl mb-10">
-          <h2 class="text-2xl md:text-3xl tracking-tight font-semibold text-slate-900">Explore by Cuisine</h2>
-          <p class="text-slate-500 mt-2">Dive into the rich traditions of Shanghai cooking</p>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {cuisines.map((c) => (
-            <CuisineCard name={c.name} description={c.description} href={`/cuisine/${c.slug}`} />
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- Cities -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-      <div class="max-w-2xl mb-10">
-        <h2 class="text-2xl md:text-3xl tracking-tight font-semibold text-slate-900">Shanghai Restaurants Near You</h2>
-        <p class="text-slate-500 mt-2">Find authentic Shanghai restaurants in cities worldwide</p>
-      </div>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {cities.map((c) => (
-          <a href={`/shanghai-restaurant-${c.slug}`} class="card-soft bg-white border border-slate-100 p-6 hover:border-accent-200 hover:bg-accent-50/30 transition-all duration-300 group">
-            <h3 class="text-lg font-semibold text-slate-900 group-hover:text-accent-600 transition-colors">{c.name}</h3>
-            <p class="text-sm text-slate-400 mt-1">{c.count} restaurants</p>
+      <!-- Quick Access -->
+      <div class="flex flex-wrap gap-2 mt-8">
+        {quickAccess.map(q => (
+          <a href={q.href} class="text-sm px-3.5 py-2 bg-white border border-slate-200 hover:border-accent-300 hover:bg-accent-50 rounded-full text-slate-600 hover:text-accent-700 transition-colors">
+            {q.icon} {q.label}
           </a>
         ))}
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- FAQ -->
-    <section class="bg-slate-50 py-16 md:py-24">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl md:text-3xl tracking-tight font-semibold text-slate-900 mb-10">Frequently Asked Questions</h2>
-        <Faq items={faqs} schema={true} />
+  <!-- ===== LOCAL FAVORITES (Top Recommended) ===== -->
+  <section id="local-favorites" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 border-t border-slate-100">
+    <div class="flex items-end justify-between mb-10">
+      <div>
+        <h2 class="text-2xl md:text-3xl tracking-tight font-semibold text-slate-900">Where Locals Actually Eat</h2>
+        <p class="text-slate-500 mt-2">These are the restaurants Shanghainese people queue for. No hotel concierge picks — just the real deal.</p>
       </div>
-    </section>
-  </main>
+      <a href="/best-shanghai-restaurants" class="hidden sm:inline-flex text-sm font-medium text-accent-600 hover:text-accent-700">
+        View all 15 &rarr;
+      </a>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {featuredRestaurants.map((r, i) => (
+        <RestaurantCard
+          name={r.name}
+          cuisine={r.cuisine}
+          rating={r.rating}
+          priceRange={r.pricePerPerson}
+          location={r.location}
+          image={r.heroImage}
+          href={`/restaurant/${r.slug}`}
+          index={i}
+          distanceFromCenter={r.distanceFromCenter}
+        />
+      ))}
+    </div>
+    <div class="mt-8 text-center sm:hidden">
+      <a href="/best-shanghai-restaurants" class="text-sm font-medium text-accent-600 hover:text-accent-700">View all 15 restaurants &rarr;</a>
+    </div>
+  </section>
+
+  <!-- ===== BROWSE BY SITUATION ===== -->
+  <section id="situations" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 border-t border-slate-100">
+    <div class="mb-10">
+      <h2 class="text-2xl md:text-3xl tracking-tight font-semibold text-slate-900">Find Restaurants by Situation</h2>
+      <p class="text-slate-500 mt-2">Whether it's your first night in Shanghai or a special occasion — we've got you covered.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {situations.map(s => {
+        const restos = s.restaurantSlugs.map(slug => restaurantBySlug[slug]).filter(Boolean);
+        return (
+          <div class="card-soft bg-white border border-slate-100 p-5 hover:border-accent-200 hover:shadow-tinted-lg transition-all duration-300 group">
+            <div class="text-2xl mb-3">{s.icon}</div>
+            <h3 class="text-base font-semibold text-slate-900">{s.name}</h3>
+            <p class="text-sm text-slate-500 mt-1.5 leading-relaxed">{s.description}</p>
+            <div class="flex flex-wrap gap-1.5 mt-3">
+              {restos.slice(0, 3).map(r => (
+                <a href={`/restaurant/${r.slug}`} class="text-xs px-2 py-0.5 bg-slate-50 rounded text-accent-600 hover:bg-accent-100 hover:text-accent-700 transition-colors">{r.name}</a>
+              ))}
+              {restos.length > 3 && <span class="text-xs text-slate-400">+{restos.length - 3} more</span>}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </section>
+
+  <!-- ===== BROWSE BY DISTRICT ===== -->
+  <section id="districts" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 border-t border-slate-100">
+    <div class="mb-10">
+      <h2 class="text-2xl md:text-3xl tracking-tight font-semibold text-slate-900">Restaurants by District</h2>
+      <p class="text-slate-500 mt-2">Every Shanghai neighborhood has its own flavor. Find the best restaurants in each area.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {districts.map(d => {
+        const restos = d.restaurantSlugs.map(slug => restaurantBySlug[slug]).filter(Boolean);
+        return (
+          <div class="card-soft bg-white border border-slate-100 p-5 hover:border-accent-200 hover:shadow-tinted-lg transition-all duration-300 group">
+            <div class="text-2xl mb-3">{d.icon}</div>
+            <h3 class="text-base font-semibold text-slate-900">{d.name}</h3>
+            <p class="text-sm text-slate-500 mt-1.5 leading-relaxed line-clamp-2">{d.description}</p>
+            <div class="flex flex-wrap gap-1.5 mt-3">
+              {restos.slice(0, 3).map(r => (
+                <a href={`/restaurant/${r.slug}`} class="text-xs px-2 py-0.5 bg-slate-50 rounded text-accent-600 hover:bg-accent-100 hover:text-accent-700 transition-colors">{r.name}</a>
+              ))}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </section>
+
+  <!-- ===== BROWSE BY CUISINE ===== -->
+  <section id="cuisines" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 border-t border-slate-100">
+    <div class="mb-10">
+      <h2 class="text-2xl md:text-3xl tracking-tight font-semibold text-slate-900">Browse by Cuisine</h2>
+      <p class="text-slate-500 mt-2">From traditional Shanghai Benbang to fiery Sichuan — explore by what you're craving.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      {cuisines.map(c => (
+        <a href={`/cuisine/${c.slug}`} class="card-soft bg-white border border-slate-100 p-6 hover:border-accent-200 hover:bg-accent-50/30 transition-all duration-300 group block">
+          <h3 class="text-lg font-semibold text-slate-900 group-hover:text-accent-600 transition-colors">{c.name}</h3>
+          <p class="text-sm text-slate-500 mt-2 leading-relaxed line-clamp-2">{c.description}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- ===== MUST-TRY SHANGHAI DISHES ===== -->
+  <section id="dishes" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 border-t border-slate-100">
+    <div class="mb-10">
+      <h2 class="text-2xl md:text-3xl tracking-tight font-semibold text-slate-900">Must-Try Shanghai Dishes</h2>
+      <p class="text-slate-500 mt-2">Don't know what to order? Start with these six essentials — and where to eat the best version of each.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {topDishes.map(d => {
+        const bestResto = restaurantBySlug[d.bestRestaurant];
+        return (
+          <a href={bestResto ? `/restaurant/${d.bestRestaurant}` : '#'} class="card-soft bg-white border border-slate-100 p-6 hover:border-amber-200 hover:bg-amber-50/30 transition-all duration-300 group block">
+            <div class="flex items-start justify-between mb-3">
+              <div class="text-3xl">{d.icon}</div>
+              <span class="text-xs text-slate-400">{d.priceRange}</span>
+            </div>
+            <h3 class="text-lg font-semibold text-slate-900 group-hover:text-accent-600 transition-colors">
+              {d.nameEn}
+              <span class="text-sm font-normal text-slate-400 ml-2">{d.nameZh}</span>
+            </h3>
+            <p class="text-sm text-slate-500 mt-2 leading-relaxed">{d.description}</p>
+            {bestResto && (
+              <div class="mt-3 text-xs font-medium text-accent-600">
+                Best at → {bestResto.name}
+              </div>
+            )}
+            <p class="text-xs text-slate-400 mt-2 italic leading-relaxed">{d.howToEat}</p>
+          </a>
+        );
+      })}
+    </div>
+  </section>
+
+  <!-- ===== RESTAURANTS NEAR ATTRACTIONS ===== -->
+  <section id="attractions" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 border-t border-slate-100">
+    <div class="mb-10">
+      <h2 class="text-2xl md:text-3xl tracking-tight font-semibold text-slate-900">Where to Eat Near Shanghai's Top Attractions</h2>
+      <p class="text-slate-500 mt-2">Plan your day: explore a landmark, then walk to a great restaurant nearby.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {attractionDining.map(a => {
+        const restos = a.restaurantSlugs.map(slug => restaurantBySlug[slug]).filter(Boolean);
+        return (
+          <div class="card-soft bg-white border border-slate-100 p-5 hover:border-accent-200 hover:shadow-tinted-lg transition-all duration-300 group">
+            <div class="text-2xl mb-3">{a.icon}</div>
+            <h3 class="text-base font-semibold text-slate-900">{a.name}</h3>
+            <p class="text-sm text-slate-500 mt-1.5 leading-relaxed">{a.description}</p>
+            <div class="flex flex-wrap gap-1.5 mt-3">
+              {restos.map(r => (
+                <a href={`/restaurant/${r.slug}`} class="text-xs px-2 py-0.5 bg-slate-50 rounded text-accent-600 hover:bg-accent-100 hover:text-accent-700 transition-colors">{r.name}</a>
+              ))}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </section>
+
+  <!-- ===== DINING TIPS ===== -->
+  <section id="tips" class="py-16 md:py-24 border-t border-slate-100 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-10">
+      <h2 class="text-2xl md:text-3xl tracking-tight font-semibold text-slate-900">Practical Dining Tips for Shanghai</h2>
+      <p class="text-slate-500 mt-2">Everything you need to know before your first meal — from reservations to payment to etiquette.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {diningTips.map(t => (
+        <div class="card-soft bg-white border border-slate-100 p-6">
+          <div class="text-2xl mb-3">{t.icon}</div>
+          <h3 class="text-base font-semibold text-slate-900 mb-2">{t.title}</h3>
+          <p class="text-sm text-slate-500 leading-relaxed">{t.summary}</p>
+        </div>
+      ))}
+    </div>
+    </div>
+  </section>
+
+  <!-- ===== METHODOLOGY ===== -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 border-t border-slate-100">
+    <div class="max-w-3xl">
+      <h2 class="text-2xl md:text-3xl tracking-tight font-semibold text-slate-900 mb-6">How We Choose Our Restaurants</h2>
+      <div class="prose prose-slate max-w-none text-slate-500 leading-relaxed space-y-4">
+        <p>Every restaurant on this guide has been <strong>personally visited and vetted</strong> by our team. We evaluate each one against five criteria:</p>
+        <ul class="list-disc pl-5 space-y-2">
+          <li><strong>Food quality</strong> — Does it represent the best of its category?</li>
+          <li><strong>Foreigner accessibility</strong> — Can a non-Chinese speaker order, pay, and enjoy the meal comfortably?</li>
+          <li><strong>Consistency</strong> — Is the quality reliable across multiple visits?</li>
+          <li><strong>Value</strong> — Does the price match the experience?</li>
+          <li><strong>Atmosphere</strong> — Is the setting appropriate for the intended occasion?</li>
+        </ul>
+        <p>We do not accept payment for inclusion. Restaurants cannot pay to be listed here. Our recommendations are <strong>editorially independent</strong> and based solely on merit.</p>
+        <p class="text-sm text-slate-400">This guide was last updated in <strong>August 2026</strong>. Restaurant hours, prices, and availability change — we recommend checking directly before visiting.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 border-t border-slate-100">
+    <h2 class="text-2xl md:text-3xl tracking-tight font-semibold text-slate-900 mb-10">Frequently Asked Questions</h2>
+    <Faq items={faqs} schema={true} />
+  </section>
+
+</main>
+
 </Layout>

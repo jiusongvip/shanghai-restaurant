@@ -9,30 +9,36 @@ export function getStaticPaths() {
 const { slug } = Astro.params;
 const restaurant = allRestaurants.find((r) => r.slug === slug);
 if (!restaurant) return Astro.redirect("/404");
-const restaurantTitle = restaurant.name.length < 12
-  ? restaurant.name + " — Shanghai Restaurant Review & Guide"
-  : restaurant.name + " — Shanghai Restaurant Review";
+const restaurantTitle = `${restaurant.name} (${restaurant.nameZh}) — A Foreigner's Guide to Dining in Shanghai`;
+const paymentLabel: Record<string, string> = {
+  "Cash": "💵 Cash",
+  "WeChat Pay": "💚 WeChat Pay",
+  "Alipay": "💙 Alipay",
+  "International Credit Cards": "💳 Intl. Cards",
+};
 ---
 
 <Layout
   fullTitle={restaurantTitle}
-  description={restaurant.description}
+  description={`Everything you need to eat at ${restaurant.name} (${restaurant.nameZh}) in Shanghai: how to order, what to say in Chinese, how to pay, reservation tips, and more.`}
 >
   <main>
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 md:pt-28 pb-12">
+    <!-- Hero -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 md:pt-28 pb-8">
       <nav class="text-sm text-slate-400 mb-6">
-        <a href="/" class="hover:text-accent-600 transition-colors">Home</a>
-        <span class="mx-2">/</span>
-        <a href="/best-shanghai-restaurants" class="hover:text-accent-600 transition-colors">Best Restaurants</a>
+        <a href="/" class="hover:text-accent-600 transition-colors">Shanghai Dining Guide</a>
         <span class="mx-2">/</span>
         <span class="text-slate-600">{restaurant.name}</span>
       </nav>
       <div class="max-w-3xl">
         <div class="flex items-center gap-2 mb-3">
           <span class="text-xs font-medium text-accent-600 bg-accent-50 px-2.5 py-1 rounded-full">{restaurant.cuisine}</span>
-          <span class="text-xs text-slate-400">{restaurant.priceRange}</span>
+          <span class="text-xs text-slate-400 uppercase">{restaurant.priceRange}</span>
         </div>
-        <h1 class="text-4xl md:text-6xl tracking-tighter leading-none font-semibold text-slate-900">{restaurant.name}</h1>
+        <h1 class="text-4xl md:text-6xl tracking-tighter leading-none font-semibold text-slate-900">
+          {restaurant.name}
+          <span class="block text-2xl md:text-3xl font-normal text-slate-400 mt-2">{restaurant.nameZh}</span>
+        </h1>
         <div class="flex items-center gap-2 mt-4">
           <span class="text-lg font-semibold text-slate-700">{restaurant.rating}</span>
           <span class="text-yellow-500 text-lg">{"★".repeat(Math.round(restaurant.rating))}</span>
@@ -41,36 +47,168 @@ const restaurantTitle = restaurant.name.length < 12
       </div>
     </section>
 
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div class="aspect-[16/9] rounded-card overflow-hidden bg-slate-100 mb-10">
-        <img src={restaurant.heroImage} alt={restaurant.name} class="w-full h-full object-cover" loading="eager" decoding="async" />
+    <!-- Hero Image -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <div class="aspect-[16/9] rounded-card overflow-hidden bg-slate-100">
+        <img src={restaurant.heroImage} alt={`${restaurant.name} (${restaurant.nameZh}) — Shanghai restaurant`} class="w-full h-full object-cover" loading="eager" decoding="async" />
       </div>
+    </section>
+
+    {/* Gallery */}
+    {restaurant.gallery && restaurant.gallery.length > 0 && (
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <h2 class="text-xl font-semibold tracking-tight text-slate-900 mb-4">Inside {restaurant.name}</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+          {restaurant.gallery.map((img) => (
+            <figure class="group">
+              <div class="aspect-[4/3] rounded-card overflow-hidden bg-slate-100">
+                <img src={img.url} alt={img.caption} loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              </div>
+              <figcaption class="text-xs text-slate-400 mt-2 leading-snug">{img.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Quick Info Grid -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+        <div class="card-soft bg-accent-50 p-4">
+          <div class="text-xs text-accent-500 font-medium mb-1">Address</div>
+          <div class="text-sm font-medium text-slate-700 leading-snug">{restaurant.address}</div>
+        </div>
+        <div class="card-soft bg-accent-50 p-4">
+          <div class="text-xs text-accent-500 font-medium mb-1">Price Per Person</div>
+          <div class="text-lg font-semibold text-slate-900">{restaurant.pricePerPerson}</div>
+        </div>
+        <div class="card-soft bg-accent-50 p-4">
+          <div class="text-xs text-accent-500 font-medium mb-1">Hours</div>
+          <div class="text-sm font-medium text-slate-700 leading-snug">{restaurant.hours}</div>
+        </div>
+        <div class="card-soft bg-accent-50 p-4">
+          <div class="text-xs text-accent-500 font-medium mb-1">Nearest Metro</div>
+          <div class="text-sm font-medium text-slate-700 leading-snug">{restaurant.metro}</div>
+        </div>
+        <div class="card-soft bg-accent-50 p-4">
+          <div class="text-xs text-accent-500 font-medium mb-1">English Support</div>
+          <div class="text-sm font-medium text-slate-700 space-y-0.5">
+            {restaurant.englishMenu && <div>✅ English Menu</div>}
+            {restaurant.pictureMenu && <div>🖼️ Picture Menu</div>}
+            {restaurant.englishSpeaking && <div>🗣️ English Spoken</div>}
+            {!restaurant.englishMenu && !restaurant.englishSpeaking && <div>📱 Translation app recommended</div>}
+          </div>
+        </div>
+      </div>
+
+      <!-- Payment -->
+      <div class="card-soft bg-white border border-slate-100 p-4 mt-4">
+        <div class="text-xs text-slate-400 font-medium mb-1">Payment Methods</div>
+        <div class="flex flex-wrap gap-2">
+          {restaurant.payment.map((p) => (
+            <span class="text-sm px-3 py-1 bg-slate-50 rounded-full text-slate-700">{paymentLabel[p] || p}</span>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Taxi Card -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <div class="card-soft bg-amber-50 border border-amber-200 p-6 max-w-3xl">
+        <div class="flex items-start gap-4">
+          <span class="text-3xl">🚕</span>
+          <div>
+            <h2 class="text-lg font-semibold text-slate-900 mb-1">Show This to Your Taxi Driver</h2>
+            <p class="text-2xl font-medium text-slate-800 mb-2">{restaurant.taxiCard}</p>
+            <p class="text-xs text-slate-500">Screenshot this and show it to your DiDi or taxi driver. They'll know exactly where to go.</p>
+            <a
+              href={restaurant.googleMapsUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(restaurant.name + ' ' + restaurant.address)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 mt-3 text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+              Open in Google Maps →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Description -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div class="max-w-3xl">
+        <h2 class="text-2xl font-semibold tracking-tight text-slate-900 mb-4">About This Restaurant</h2>
         <p class="text-lg text-slate-500 leading-relaxed">{restaurant.description}</p>
       </div>
     </section>
 
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <h2 class="text-2xl font-semibold tracking-tight text-slate-900 mb-6">Signature Dishes</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <!-- Signature Dishes -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <h2 class="text-2xl font-semibold tracking-tight text-slate-900 mb-6">What to Order</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl">
         {restaurant.dishes.map((dish) => (
-          <div class="card-soft bg-slate-50 p-5">
-            <h3 class="text-slate-900 font-medium text-base">{dish}</h3>
+          <div class={`card-soft p-5 border ${dish.mustTry ? 'border-amber-200 bg-amber-50' : 'border-slate-100 bg-white'}`}>
+            <div class="flex items-start justify-between mb-2">
+              <div>
+                <h3 class="text-lg font-semibold text-slate-900">{dish.nameEn}</h3>
+                <p class="text-base text-slate-600 mt-0.5">{dish.nameZh}</p>
+              </div>
+              {dish.mustTry && <span class="text-xs font-bold text-amber-600 bg-amber-100 px-2 py-0.5 rounded-full shrink-0">MUST TRY</span>}
+            </div>
+            <p class="text-xs text-accent-500 italic mb-2">Say: "{dish.pronunciation}"</p>
+            <p class="text-sm text-slate-500 leading-relaxed">{dish.description}</p>
           </div>
         ))}
       </div>
     </section>
 
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <h2 class="text-2xl font-semibold tracking-tight text-slate-900 mb-6">Best For</h2>
-      <div class="flex flex-wrap gap-3">
-        {restaurant.bestFor.map((tag) => (
-          <span class="text-sm px-4 py-2 card-soft bg-white border border-slate-100 text-slate-600">{tag}</span>
-        ))}
+    <!-- Reservation + Dietary + Tips -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl">
+        <div class="card-soft bg-white border border-slate-100 p-6">
+          <h3 class="text-lg font-semibold text-slate-900 mb-3">📋 Reservations</h3>
+          <p class="text-sm text-slate-500 leading-relaxed">{restaurant.reservation}</p>
+        </div>
+        <div class="card-soft bg-white border border-slate-100 p-6">
+          <h3 class="text-lg font-semibold text-slate-900 mb-3">🥬 Dietary Notes</h3>
+          <p class="text-sm text-slate-500 leading-relaxed">{restaurant.dietary}</p>
+        </div>
+        <div class="card-soft bg-white border border-slate-100 p-6">
+          <h3 class="text-lg font-semibold text-slate-900 mb-3">💡 Pro Tips</h3>
+          <ul class="text-sm text-slate-500 leading-relaxed space-y-2">
+            {restaurant.tips.map((tip) => (
+              <li class="flex gap-2"><span class="text-accent-500 shrink-0">•</span> {tip}</li>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
 
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pb-24">
+    <!-- Best For & Nearby -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+        <div>
+          <h2 class="text-xl font-semibold tracking-tight text-slate-900 mb-4">Best For</h2>
+          <div class="flex flex-wrap gap-2">
+            {restaurant.bestFor.map((tag) => (
+              <span class="text-sm px-3 py-1.5 bg-slate-50 border border-slate-100 rounded-full text-slate-600">{tag}</span>
+            ))}
+          </div>
+        </div>
+        <div>
+          <h2 class="text-xl font-semibold tracking-tight text-slate-900 mb-4">Nearby Attractions</h2>
+          <div class="flex flex-wrap gap-2">
+            {restaurant.nearbyAttractions.map((attr) => (
+              <span class="text-sm px-3 py-1.5 bg-accent-50 border border-accent-100 rounded-full text-accent-700">{attr}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Back Link -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-24">
       <a href="/best-shanghai-restaurants" class="text-sm font-medium text-accent-600 hover:text-accent-700">&larr; Back to all restaurants</a>
     </section>
   </main>
@@ -78,10 +216,11 @@ const restaurantTitle = restaurant.name.length < 12
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Restaurant",
-    "name": restaurant.name,
+    "name": `${restaurant.name} (${restaurant.nameZh})`,
     "description": restaurant.description,
     "servesCuisine": restaurant.cuisine,
-    "priceRange": restaurant.priceRange,
+    "priceRange": restaurant.pricePerPerson,
+    "address": { "@type": "PostalAddress", "streetAddress": restaurant.address, "addressLocality": "Shanghai", "addressCountry": "CN" },
     "image": { "@type": "ImageObject", "url": "https://shanghai-restaurant.com" + restaurant.heroImage, "caption": restaurant.name + " - Shanghai Restaurant" },
     "aggregateRating": {
       "@type": "AggregateRating",

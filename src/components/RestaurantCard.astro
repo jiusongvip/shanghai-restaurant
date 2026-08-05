@@ -8,9 +8,10 @@ export interface Props {
   image: string;
   href: string;
   index?: number;
+  distanceFromCenter?: string;
 }
 
-const { name, cuisine, rating, priceRange, location, image, href, index = 0 } = Astro.props;
+const { name, cuisine, rating, priceRange, location, image, href, index = 0, distanceFromCenter } = Astro.props;
 ---
 
 <a
@@ -39,7 +40,10 @@ const { name, cuisine, rating, priceRange, location, image, href, index = 0 } = 
           {"★".repeat(Math.round(rating))}
         </span>
       </div>
-      <p class="text-sm text-slate-500 mt-2">{location}</p>
+      <div class="flex items-center gap-3 mt-2 text-xs text-slate-400">
+        <span>{location}</span>
+        {distanceFromCenter && <span class="text-accent-600">{distanceFromCenter}</span>}
+      </div>
     </div>
   </div>
 </a>
