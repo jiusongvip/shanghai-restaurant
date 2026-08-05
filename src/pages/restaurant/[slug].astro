@@ -16,6 +16,11 @@ const paymentLabel: Record<string, string> = {
   "Alipay": "💙 Alipay",
   "International Credit Cards": "💳 Intl. Cards",
 };
+
+// Nearby recommendations: same district or same cuisine, exclude current
+const nearby = allRestaurants
+  .filter(r => r.slug !== slug && (r.location === restaurant.location || r.cuisine === restaurant.cuisine))
+  .slice(0, 3);
 ---
 
 <Layout
@@ -44,6 +49,13 @@ const paymentLabel: Record<string, string> = {
           <span class="text-yellow-500 text-lg">{"★".repeat(Math.round(restaurant.rating))}</span>
           <span class="text-slate-400 text-sm ml-2">{restaurant.location}</span>
         </div>
+        {restaurant.awards && restaurant.awards.length > 0 && (
+          <div class="flex flex-wrap gap-1.5 mt-3">
+            {restaurant.awards.map(a => (
+              <span class={`text-xs font-semibold px-2 py-0.5 rounded border ${a.includes('米其林') ? 'bg-red-50 text-red-700 border-red-200' : a.includes('必吃榜') || a.includes('百年老店') ? 'bg-amber-50 text-amber-700 border-amber-200' : a.includes('Jean-Georges') ? 'bg-slate-50 text-slate-700 border-slate-200' : 'bg-green-50 text-green-700 border-green-200'}`}>{a}</span>
+            ))}
+          </div>
+        )}
       </div>
     </section>
 
@@ -208,7 +220,34 @@ const paymentLabel: Record<string, string> = {
     </section>
 
     <!-- Back Link -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-24">
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      {nearby.length > 0 && (
+        <div class="max-w-4xl mb-8">
+          <h2 class="text-xl font-semibold tracking-tight text-slate-900 mb-4">📍 Nearby Also Try</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {nearby.map(r => (
+              <a href={`/restaurant/${r.slug}`} class="card-soft bg-white border border-slate-100 p-4 hover:border-accent-200 hover:shadow-tinted transition-all duration-200 group">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="text-xs font-medium text-accent-600 bg-accent-50 px-1.5 py-0.5 rounded-full">{r.cuisine}</span>
+                  <span class="text-xs text-slate-400">{r.pricePerPerson}</span>
+                </div>
+                <h3 class="text-sm font-semibold text-slate-900 group-hover:text-accent-600 transition-colors">{r.name}</h3>
+                <div class="flex items-center gap-1 mt-1">
+                  <span class="text-xs font-medium text-slate-600">{r.rating}</span>
+                  <span class="text-yellow-500 text-xs">{"★".repeat(Math.round(r.rating))}</span>
+                </div>
+                {r.awards && r.awards.length > 0 && (
+                  <div class="flex flex-wrap gap-1 mt-2">
+                    {r.awards.slice(0, 1).map(a => (
+                      <span class={`text-[10px] font-semibold px-1.5 py-0.5 rounded border ${a.includes('米其林') ? 'bg-red-50 text-red-700 border-red-200' : 'bg-amber-50 text-amber-700 border-amber-200'}`}>{a}</span>
+                    ))}
+                  </div>
+                )}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
       <a href="/#local-favorites" class="text-sm font-medium text-accent-600 hover:text-accent-700">&larr; Back to all restaurants</a>
     </section>
   </main>

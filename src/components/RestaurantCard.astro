@@ -9,9 +9,26 @@ export interface Props {
   href: string;
   index?: number;
   distanceFromCenter?: string;
+  awards?: string[];
+  bestFor?: string[];
 }
 
-const { name, cuisine, rating, priceRange, location, image, href, index = 0, distanceFromCenter } = Astro.props;
+const { name, cuisine, rating, priceRange, location, image, href, index = 0, distanceFromCenter, awards, bestFor } = Astro.props;
+
+const awardColors: Record<string, string> = {
+  '米其林': 'bg-red-50 text-red-700 border-red-200',
+  '大众点评': 'bg-amber-50 text-amber-700 border-amber-200',
+  '百年老店': 'bg-amber-50 text-amber-700 border-amber-200',
+  'Jean-Georges': 'bg-slate-50 text-slate-700 border-slate-200',
+  '上海最佳': 'bg-green-50 text-green-700 border-green-200',
+};
+
+function getAwardStyle(award: string) {
+  for (const [key, style] of Object.entries(awardColors)) {
+    if (award.includes(key)) return style;
+  }
+  return 'bg-slate-50 text-slate-600 border-slate-200';
+}
 ---
 
 <a
@@ -40,6 +57,21 @@ const { name, cuisine, rating, priceRange, location, image, href, index = 0, dis
           {"★".repeat(Math.round(rating))}
         </span>
       </div>
+      {awards && awards.length > 0 && (
+        <div class="flex flex-wrap gap-1 mt-2">
+          {awards.map(a => (
+            <span class={`text-[10px] font-semibold px-1.5 py-0.5 rounded border ${getAwardStyle(a)}`}>{a}</span>
+          ))}
+        </div>
+      )}
+      {bestFor && bestFor.length > 0 && (
+        <div class="flex flex-wrap gap-1 mt-2">
+          {bestFor.slice(0, 2).map(b => (
+            <span class="text-[10px] text-slate-400 bg-slate-50 px-1.5 py-0.5 rounded">{b}</span>
+          ))}
+          {bestFor.length > 2 && <span class="text-[10px] text-slate-400">+{bestFor.length - 2}</span>}
+        </div>
+      )}
       <div class="flex items-center gap-3 mt-2 text-xs text-slate-400">
         <span>{location}</span>
         {distanceFromCenter && <span class="text-accent-600">{distanceFromCenter}</span>}

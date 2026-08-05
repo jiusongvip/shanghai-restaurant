@@ -34,6 +34,7 @@ export interface Restaurant {
   nearbyAttractions: string[];
   distanceFromCenter?: string;
   googleMapsUrl?: string;
+  awards?: string[];
 }
 
 export const featuredRestaurants: Restaurant[] = [
@@ -78,6 +79,7 @@ export const featuredRestaurants: Restaurant[] = [
     ],
     nearbyAttractions: ["People's Square", "Nanjing Road Pedestrian Street", "Shanghai Museum"],
     distanceFromCenter: "0.5 km from People's Square",
+    awards: ["大众点评必吃榜"],
   },
   {
     name: "Old Jesse",
@@ -122,6 +124,7 @@ export const featuredRestaurants: Restaurant[] = [
     ],
     nearbyAttractions: ["Former French Concession", "Wukang Road", "Shanghai Library"],
     distanceFromCenter: "5 km from People's Square",
+    awards: ["米其林入选"],
   },
   {
     name: "Fu He Hui",
@@ -165,6 +168,7 @@ export const featuredRestaurants: Restaurant[] = [
     ],
     nearbyAttractions: ["Jing'an Temple", "Former French Concession", "Yuyuan Road Historic Area"],
     distanceFromCenter: "6 km from People's Square",
+    awards: ["米其林一星"],
   },
   {
     name: "Yang's Fried Dumpling",
@@ -208,6 +212,7 @@ export const featuredRestaurants: Restaurant[] = [
     ],
     nearbyAttractions: ["People's Square", "Nanjing Road Pedestrian Street", "Shanghai Grand Theatre"],
     distanceFromCenter: "0.5 km from People's Square",
+    awards: ["大众点评必吃榜"],
   },
   {
     name: "Lost Heaven",
@@ -252,6 +257,7 @@ export const featuredRestaurants: Restaurant[] = [
     ],
     nearbyAttractions: ["The Bund", "Yu Garden", "Nanjing Road", "Bund Sightseeing Tunnel"],
     distanceFromCenter: "1.5 km from People's Square",
+    awards: ["米其林入选"],
   },
   {
     name: "YongFoo Elite",
@@ -288,6 +294,7 @@ export const featuredRestaurants: Restaurant[] = [
     tips: ["The garden terrace is magical at dusk — request an outdoor table if weather permits.", "Afternoon tea is a more affordable way to experience the mansion."],
     nearbyAttractions: ["Former French Concession", "Shanghai Library"],
     distanceFromCenter: "5 km from People's Square",
+    awards: ["米其林一星"],
   },
 ];
 
@@ -326,6 +333,7 @@ export const moreRestaurants: Restaurant[] = [
     tips: ["The tasting menu is the best way to experience the full range of the kitchen.", "Book well in advance — this is one of Shanghai's hardest tables."],
     nearbyAttractions: ["Jing'an Temple", "Nanjing Road"],
     distanceFromCenter: "3 km from People's Square",
+    awards: ["米其林二星"],
     googleMapsUrl: "https://www.google.com/maps/place/%E6%96%B0%E8%8D%A3%E8%AE%B0%E5%8D%97%E4%BA%AC%E8%A5%BF%E8%B7%AF%E5%BA%97/@31.23132,121.4621351,1006m/data=!3m1!1e3!4m16!1m9!3m8!1s0x35b27014459c2d39:0x920321c09f4f3ddf!2z5paw6I2j6K6w5Y2X5Lqs6KW_6Lev5bqX!8m2!3d31.23132!4d121.46471!9m1!1b1!16s%2Fg%2F11rv1sgttq!3m5!1s0x35b27014459c2d39:0x920321c09f4f3ddf!8m2!3d31.23132!4d121.46471!16s%2Fg%2F11rv1sgttq?entry=ttu&g_ep=EgoyMDI2MDgwMi4wIKXMDSoASAFQAw%3D%3D",
   },
   {
@@ -364,6 +372,7 @@ export const moreRestaurants: Restaurant[] = [
     tips: ["The Xin Tian Di flagship is the most atmospheric location.", "Order the hot and sour soup between dumpling courses — it cleanses the palate perfectly."],
     nearbyAttractions: ["Xintiandi", "French Concession"],
     distanceFromCenter: "3 km from People's Square",
+    awards: ["米其林一星"],
   },
   {
     name: "Nanxiang Steamed Bun",
@@ -400,6 +409,7 @@ export const moreRestaurants: Restaurant[] = [
     tips: ["Go early on a weekday (before 10 AM) for the shortest queues.", "The ground-floor takeout counter is faster and cheaper than the upstairs dining room.", "Combine with a visit to Yu Garden — they are in the same complex."],
     nearbyAttractions: ["Yu Garden", "City God Temple", "The Bund"],
     distanceFromCenter: "2 km from People's Square",
+    awards: ["百年老店 (1900)"],
   },
   {
     name: "Mercato",
@@ -436,6 +446,7 @@ export const moreRestaurants: Restaurant[] = [
     tips: ["Request a window table for Pudong skyline views.", "The weekend brunch is excellent value and less crowded than dinner."],
     nearbyAttractions: ["The Bund", "Nanjing Road"],
     distanceFromCenter: "1.5 km from People's Square",
+    awards: ["Jean-Georges"],
   },
   {
     name: "De Xing Guan",
@@ -474,6 +485,7 @@ export const moreRestaurants: Restaurant[] = [
     tips: ["Order at the ground floor counter for noodles; go upstairs for full sit-down meals.", "The braised pork knuckle noodles are the must-order — add a side of xiaolongbao for the complete experience.", "No English menu, but there's a picture menu — point and smile works perfectly."],
     nearbyAttractions: ["Nanjing Road Pedestrian Street", "The Bund", "People's Square"],
     distanceFromCenter: "1 km from People's Square",
+    awards: ["百年老店 (1883)"],
   },
   {
     name: "Funkadeli",
@@ -512,6 +524,7 @@ export const moreRestaurants: Restaurant[] = [
     tips: ["Happy hour runs daily — one of the best deals in the French Concession for cocktails and aperitivo.", "The ground floor bar and terrace are walk-in only; reserve ahead if you want a table upstairs for dinner.", "Perfect pre-dinner spot — grab an Aperol Spritz and a ham platter, then head to one of the nearby restaurants on Fumin Road."],
     nearbyAttractions: ["Former French Concession", "Jing'an Temple", "Fumin Road nightlife"],
     distanceFromCenter: "3 km from People's Square",
+    awards: ["上海最佳Happy Hour"],
   },
   {
     name: "Ren He Guan",
@@ -550,6 +563,7 @@ export const moreRestaurants: Restaurant[] = [
     tips: ["Book at least 3 days in advance — this is one of Shanghai's most popular restaurants.", "Arrive by 6:15 PM to catch the live qipao singer at 6:30 PM — it's a uniquely Shanghai experience.", "The crab rice is the must-order. Everything else is a supporting act."],
     nearbyAttractions: ["Former French Concession", "Hengshan Road", "Xujiahui Cathedral"],
     distanceFromCenter: "4 km from People's Square",
+    awards: ["米其林一星"],
   },
   {
     name: "Hai Fu Duo Gong Fu Seafood Noodle",
@@ -588,6 +602,7 @@ export const moreRestaurants: Restaurant[] = [
     tips: ["Book a week ahead — this is one of Shanghai's hardest reservations for groups.", "Arrive by 5 PM for walk-in if you can't get a reservation; after 6 PM the queue hits triple digits.", "Come with a group of 4+ — the menu is designed for sharing and you'll want to try everything.", "The name says 'noodle restaurant' but this is a full-scale seafood hall — don't expect a quiet bowl of noodles."],
     nearbyAttractions: ["Zhihui Bay Creative Park", "Wusongkou Paotaiwan Wetland Park"],
     distanceFromCenter: "15 km from People's Square",
+    awards: ["大众点评必吃榜"],
   },
   {
     name: "Guangmingcun Restaurant",
@@ -626,6 +641,7 @@ export const moreRestaurants: Restaurant[] = [
     tips: ["The takeaway queue is a Shanghai landmark — embrace it. Best time: weekday mornings before 10 AM or late afternoon around 4 PM.", "Fresh pork mooncakes sell out daily, often by early afternoon. If you see them, buy them — do not wait.", "Skip the 2nd floor queue and go straight to 3rd/4th floor for the full Benbang menu — the same dishes with table service and far less chaos.", "Only one location in all of Shanghai — do not be fooled by imitators or similarly named establishments."],
     nearbyAttractions: ["Huaihai Middle Road shopping", "Xintiandi", "K11 Art Mall", "Former French Concession"],
     distanceFromCenter: "2 km from People's Square",
+    awards: ["大众点评必吃榜"],
   },
 ];
 

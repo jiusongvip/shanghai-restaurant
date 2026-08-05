@@ -74,6 +74,8 @@ const restaurantBySlug = Object.fromEntries(allRestaurants.map(r => [r.slug, r])
           href={`/restaurant/${r.slug}`}
           index={i}
           distanceFromCenter={r.distanceFromCenter}
+          awards={r.awards}
+          bestFor={r.bestFor}
         />
       ))}
     </div>
