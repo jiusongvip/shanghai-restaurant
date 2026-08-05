@@ -1,0 +1,172 @@
+[31m[1m16:53:32[22m [ERROR][39m (0 , __vite_ssr_import_1__.avifSrcset) is not a function
+  [1mStack trace:[22m
+[2m    at eval (D:\workspace\shanghai-restaurant\src\components\RestaurantCard.astro:25:17)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[31m[1m16:53:37[22m [ERROR][39m avifSrcset is not defined
+  [1mStack trace:[22m
+[2m    at eval (D:\workspace\shanghai-restaurant\src\components\RestaurantCard.astro:25:9)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[31m[1m16:53:37[22m [ERROR][39m avifSrcset is not defined
+  [1mStack trace:[22m
+[2m    at eval (D:\workspace\shanghai-restaurant\src\components\RestaurantCard.astro:25:9)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[31m[1m16:53:39[22m [ERROR][39m avifSrcset is not defined
+  [1mStack trace:[22m
+[2m    at eval (D:\workspace\shanghai-restaurant\src\components\RestaurantCard.astro:25:9)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[31m[1m16:53:41[22m [ERROR][39m avifSrcset is not defined
+  [1mStack trace:[22m
+[2m    at eval (D:\workspace\shanghai-restaurant\src\components\RestaurantCard.astro:25:9)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[31m[1m16:53:42[22m [ERROR][39m avifSrcset is not defined
+  [1mStack trace:[22m
+[2m    at eval (D:\workspace\shanghai-restaurant\src\components\RestaurantCard.astro:25:9)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[31m[1m16:53:43[22m [ERROR][39m avifSrcset is not defined
+  [1mStack trace:[22m
+[2m    at eval (D:\workspace\shanghai-restaurant\src\components\RestaurantCard.astro:25:9)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[31m[1m16:53:55[22m [ERROR][39m TypeError: (0 , __vite_ssr_import_4__.avifSrcset) is not a function
+    at eval (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:52:33)
+    at Array.map (<anonymous>)
+    at Object.default (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:48:10)
+    at new AstroComponentInstance (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\astro\instance.js:20:30)
+    at createAstroComponentInstance (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\astro\instance.js:75:20)
+    at renderAstroComponent (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\component.js:361:20)
+    at renderComponent (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\component.js:382:12)
+    at eval (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:27:1)
+    at shanghai-cuisine-guide (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\astro-component.js:16:12)
+    at callComponentAsTemplateResultOrResponse (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\astro\render.js:203:31)
+[31m[1m16:53:55[22m [ERROR][39m (0 , __vite_ssr_import_4__.avifSrcset) is not a function
+  [1mStack trace:[22m
+[2m    at eval (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:52:33)
+    at Object.default (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:48:10)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[31m[1m16:53:58[22m [ERROR][39m ReferenceError: avifSrcset is not defined
+    at eval (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:52:25)
+    at Array.map (<anonymous>)
+    at Object.default (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:48:10)
+    at new AstroComponentInstance (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\astro\instance.js:20:30)
+    at createAstroComponentInstance (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\astro\instance.js:75:20)
+    at renderAstroComponent (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\component.js:361:20)
+    at renderComponent (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\component.js:382:12)
+    at eval (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:27:1)
+    at shanghai-cuisine-guide (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\astro-component.js:16:12)
+    at callComponentAsTemplateResultOrResponse (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\astro\render.js:203:31)
+[31m[1m16:53:58[22m [ERROR][39m ReferenceError: avifSrcset is not defined
+    at eval (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:52:25)
+    at Array.map (<anonymous>)
+    at Object.default (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:48:10)
+    at new AstroComponentInstance (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\astro\instance.js:20:30)
+    at createAstroComponentInstance (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\astro\instance.js:75:20)
+    at renderAstroComponent (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\component.js:361:20)
+    at renderComponent (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\component.js:382:12)
+    at eval (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:27:1)
+    at shanghai-cuisine-guide (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\astro-component.js:16:12)
+    at callComponentAsTemplateResultOrResponse (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\astro\render.js:203:31)
+[31m[1m16:53:58[22m [ERROR][39m avifSrcset is not defined
+  [1mStack trace:[22m
+[2m    at eval (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:52:25)
+    at Object.default (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:48:10)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[31m[1m16:53:58[22m [ERROR][39m avifSrcset is not defined
+  [1mStack trace:[22m
+[2m    at eval (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:52:25)
+    at Object.default (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:48:10)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[31m[1m16:53:58[22m [ERROR][39m ReferenceError: avifSrcset is not defined
+    at eval (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:52:25)
+    at Array.map (<anonymous>)
+    at Object.default (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:48:10)
+    at new AstroComponentInstance (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\astro\instance.js:20:30)
+    at createAstroComponentInstance (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\astro\instance.js:75:20)
+    at renderAstroComponent (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\component.js:361:20)
+    at renderComponent (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\component.js:382:12)
+    at eval (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:27:1)
+    at shanghai-cuisine-guide (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\astro-component.js:16:12)
+    at callComponentAsTemplateResultOrResponse (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\astro\render.js:203:31)
+[31m[1m16:53:58[22m [ERROR][39m avifSrcset is not defined
+  [1mStack trace:[22m
+[2m    at eval (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:52:25)
+    at Object.default (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:48:10)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[31m[1m16:54:01[22m [ERROR][39m ReferenceError: avifSrcset is not defined
+    at eval (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:52:25)
+    at Array.map (<anonymous>)
+    at Object.default (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:48:10)
+    at new AstroComponentInstance (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\astro\instance.js:20:30)
+    at createAstroComponentInstance (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\astro\instance.js:75:20)
+    at renderAstroComponent (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\component.js:361:20)
+    at renderComponent (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\component.js:382:12)
+    at eval (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:27:1)
+    at shanghai-cuisine-guide (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\astro-component.js:16:12)
+    at callComponentAsTemplateResultOrResponse (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\astro\render.js:203:31)
+[31m[1m16:54:01[22m [ERROR][39m avifSrcset is not defined
+  [1mStack trace:[22m
+[2m    at eval (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:52:25)
+    at Object.default (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:48:10)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[31m[1m16:54:02[22m [ERROR][39m ReferenceError: avifSrcset is not defined
+    at eval (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:52:25)
+    at Array.map (<anonymous>)
+    at Object.default (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:48:10)
+    at new AstroComponentInstance (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\astro\instance.js:20:30)
+    at createAstroComponentInstance (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\astro\instance.js:75:20)
+    at renderAstroComponent (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\component.js:361:20)
+    at renderComponent (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\component.js:382:12)
+    at eval (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:27:1)
+    at shanghai-cuisine-guide (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\astro-component.js:16:12)
+    at callComponentAsTemplateResultOrResponse (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\astro\render.js:203:31)
+[31m[1m16:54:02[22m [ERROR][39m avifSrcset is not defined
+  [1mStack trace:[22m
+[2m    at eval (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:52:25)
+    at Object.default (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:48:10)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[31m[1m16:54:02[22m [ERROR][39m ReferenceError: avifSrcset is not defined
+    at eval (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:52:25)
+    at Array.map (<anonymous>)
+    at Object.default (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:48:10)
+    at new AstroComponentInstance (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\astro\instance.js:20:30)
+    at createAstroComponentInstance (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\astro\instance.js:75:20)
+    at renderAstroComponent (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\component.js:361:20)
+    at renderComponent (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\component.js:382:12)
+    at eval (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:27:1)
+    at shanghai-cuisine-guide (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\astro-component.js:16:12)
+    at callComponentAsTemplateResultOrResponse (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\astro\render.js:203:31)
+[31m[1m16:54:02[22m [ERROR][39m ReferenceError: avifSrcset is not defined
+    at eval (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:52:25)
+    at Array.map (<anonymous>)
+    at Object.default (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:48:10)
+    at new AstroComponentInstance (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\astro\instance.js:20:30)
+    at createAstroComponentInstance (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\astro\instance.js:75:20)
+    at renderAstroComponent (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\component.js:361:20)
+    at renderComponent (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\component.js:382:12)
+    at eval (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:27:1)
+    at shanghai-cuisine-guide (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\astro-component.js:16:12)
+    at callComponentAsTemplateResultOrResponse (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\astro\render.js:203:31)
+[31m[1m16:54:02[22m [ERROR][39m avifSrcset is not defined
+  [1mStack trace:[22m
+[2m    at eval (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:52:25)
+    at Object.default (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:48:10)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[31m[1m16:54:02[22m [ERROR][39m avifSrcset is not defined
+  [1mStack trace:[22m
+[2m    at eval (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:52:25)
+    at Object.default (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:48:10)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[31m[1m16:54:02[22m [ERROR][39m ReferenceError: avifSrcset is not defined
+    at eval (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:52:25)
+    at Array.map (<anonymous>)
+    at Object.default (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:48:10)
+    at new AstroComponentInstance (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\astro\instance.js:20:30)
+    at createAstroComponentInstance (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\astro\instance.js:75:20)
+    at renderAstroComponent (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\component.js:361:20)
+    at renderComponent (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\component.js:382:12)
+    at eval (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:27:1)
+    at shanghai-cuisine-guide (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\astro-component.js:16:12)
+    at callComponentAsTemplateResultOrResponse (D:\workspace\shanghai-restaurant\node_modules\astro\dist\runtime\server\render\astro\render.js:203:31)
+[31m[1m16:54:02[22m [ERROR][39m avifSrcset is not defined
+  [1mStack trace:[22m
+[2m    at eval (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:52:25)
+    at Object.default (D:\workspace\shanghai-restaurant\src\pages\shanghai-cuisine-guide.astro:48:10)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m

@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import RestaurantCard from "../components/RestaurantCard.astro";
 import Faq from "../components/Faq.astro";
-import { featuredRestaurants, allRestaurants, cuisines, faqs } from "../data/restaurants";
+import { allRestaurants, cuisines, faqs } from "../data/restaurants";
 import { situations, districts, attractionDining, topDishes, diningTips, quickAccess } from "../data/homepage";
 
 const restaurantBySlug = Object.fromEntries(allRestaurants.map(r => [r.slug, r]));
@@ -56,19 +56,14 @@ const restaurantBySlug = Object.fromEntries(allRestaurants.map(r => [r.slug, r])
     </div>
   </section>
 
-  <!-- ===== LOCAL FAVORITES (Top Recommended) ===== -->
+  <!-- ===== ALL RESTAURANTS ===== -->
   <section id="local-favorites" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 border-t border-slate-100">
-    <div class="flex items-end justify-between mb-10">
-      <div>
-        <h2 class="text-2xl md:text-3xl tracking-tight font-semibold text-slate-900">Where Locals Actually Eat</h2>
-        <p class="text-slate-500 mt-2">These are the restaurants Shanghainese people queue for. No hotel concierge picks — just the real deal.</p>
-      </div>
-      <a href="/best-shanghai-restaurants" class="hidden sm:inline-flex text-sm font-medium text-accent-600 hover:text-accent-700">
-        View all 15 &rarr;
-      </a>
+    <div class="mb-10">
+      <h2 class="text-2xl md:text-3xl tracking-tight font-semibold text-slate-900">The 15 Best Shanghai Restaurants</h2>
+      <p class="text-slate-500 mt-2">Every restaurant hand-picked and personally vetted. These are the places Shanghainese people queue for — no hotel concierge picks, just the real deal.</p>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {featuredRestaurants.map((r, i) => (
+      {allRestaurants.map((r, i) => (
         <RestaurantCard
           name={r.name}
           cuisine={r.cuisine}
@@ -81,9 +76,6 @@ const restaurantBySlug = Object.fromEntries(allRestaurants.map(r => [r.slug, r])
           distanceFromCenter={r.distanceFromCenter}
         />
       ))}
-    </div>
-    <div class="mt-8 text-center sm:hidden">
-      <a href="/best-shanghai-restaurants" class="text-sm font-medium text-accent-600 hover:text-accent-700">View all 15 restaurants &rarr;</a>
     </div>
   </section>
 
@@ -146,10 +138,10 @@ const restaurantBySlug = Object.fromEntries(allRestaurants.map(r => [r.slug, r])
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
       {cuisines.map(c => (
-        <a href={`/cuisine/${c.slug}`} class="card-soft bg-white border border-slate-100 p-6 hover:border-accent-200 hover:bg-accent-50/30 transition-all duration-300 group block">
-          <h3 class="text-lg font-semibold text-slate-900 group-hover:text-accent-600 transition-colors">{c.name}</h3>
-          <p class="text-sm text-slate-500 mt-2 leading-relaxed line-clamp-2">{c.description}</p>
-        </a>
+        <div class="card-soft bg-white border border-slate-100 p-6 hover:border-accent-200 hover:bg-accent-50/30 transition-all duration-300">
+          <h3 class="text-lg font-semibold text-slate-900">{c.name}</h3>
+          <p class="text-sm text-slate-500 mt-2 leading-relaxed">{c.description}</p>
+        </div>
       ))}
     </div>
   </section>

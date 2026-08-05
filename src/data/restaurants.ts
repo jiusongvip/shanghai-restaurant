@@ -639,13 +639,6 @@ export const cuisines = [
   { name: "Fine Dining", slug: "fine-dining", description: "Shanghai's fine dining scene has undergone a remarkable transformation over the past two decades, evolving from a handful of hotel restaurants into one of Asia's most exciting gastronomic destinations. The city now boasts multiple Michelin-starred establishments that span the full spectrum: from Fu He Hui's transcendent vegetarian tasting menus that turn mushrooms and bamboo into haute cuisine, to Xin Rong Ji's refined interpretations of Taizhou and Shanghainese classics served in rooms that rival Europe's finest, to Jean-Georges Vongerichten's Mercato where Italian and Shanghai sensibilities merge on the Bund. What distinguishes Shanghai fine dining is its relationship with seasonality and local ingredients — chefs build entire menus around the arrival of hairy crab in autumn, spring bamboo shoots, and the dozens of river fish species that define Yangtze cuisine. Service standards have risen dramatically, with many restaurants now operating at levels comparable to top tables in Paris and Tokyo. The ambiance ranges from the historic grandeur of YongFoo Elite's 1930s mansion to the sleek, modern elegance of restaurants in the Bund and Lujiazui skyline. Tasting menus typically span 8-15 courses and run from RMB 500 to over RMB 2,000 per person, often paired with rare teas or an increasingly sophisticated wine program. For those seeking the pinnacle of Shanghai dining, reservations are essential — the best tables at the most celebrated restaurants can be booked solid weeks or even months in advance." },
 ];
 
-export const cities = [
-  { name: "New York", slug: "nyc", count: 28 },
-  { name: "Los Angeles", slug: "los-angeles", count: 19 },
-  { name: "London", slug: "london", count: 14 },
-  { name: "Sydney", slug: "sydney", count: 11 },
-];
-
 export const faqs = [
   { q: "What is Shanghai cuisine known for?", a: "Shanghai cuisine, or Benbang cuisine, is known for its sweet and savory soy-based braised dishes, soup dumplings (xiaolongbao), and an emphasis on fresh seafood and seasonal ingredients like hairy crab." },
   { q: "What is the average cost of a Shanghai restaurant meal?", a: "Street food and casual spots range from RMB 20-80. Mid-range restaurants average RMB 100-250 per person. Fine dining tasting menus start from RMB 500 and can exceed RMB 2,000." },
