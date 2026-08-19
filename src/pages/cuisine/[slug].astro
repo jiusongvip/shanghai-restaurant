@@ -139,7 +139,7 @@ const content = cuisineContent[cuisine?.slug || ''] || { dishes: [], tips: [] };
     )}
 
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pb-24">
-      <a href="/shanghai-cuisine-guide" class="text-sm font-medium text-accent-600 hover:text-accent-700">&larr; Back to Cuisine Guide</a>
+      <a href="/shanghai-cuisine-guide/" class="text-sm font-medium text-accent-600 hover:text-accent-700">&larr; Back to Cuisine Guide</a>
     </section>
   </main>
 
@@ -148,6 +148,6 @@ const content = cuisineContent[cuisine?.slug || ''] || { dishes: [], tips: [] };
     "@type": "CollectionPage",
     "name": cuisine.name + " - Shanghai Cuisine Guide",
     "description": shortDesc,
-    "url": "https://shanghai-restaurant.com/cuisine/" + cuisine.slug,
+    "url": "https://www.shanghai-restaurant.com/cuisine/" + cuisine.slug,
   })} />
 </Layout>

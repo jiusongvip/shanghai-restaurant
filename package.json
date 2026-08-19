@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "node scripts/optimize-images.cjs && npx astro build",
+    "build": "node scripts/optimize-images.cjs && npx astro build && node scripts/fix-sitemap-home.mjs",
     "preview": "astro preview"
   },
   "dependencies": {

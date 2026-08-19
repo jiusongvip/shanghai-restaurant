@@ -23,7 +23,9 @@ for (const seg of segments) {
   breadcrumbs.push({ name: seg.split('-').map(function(w) { return w.charAt(0).toUpperCase() + w.slice(1); }).join(' '), url: new URL(accum, Astro.site).href });
 }
 const breadcrumbJson = JSON.stringify({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: breadcrumbs.map(function(bc, i) { return { '@type': 'ListItem', position: i + 1, name: bc.name, item: bc.url }; }) });
-const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href.replace(/\/$/, "");
+const canonicalUrl = Astro.url.pathname === "/"
+  ? new URL("/", Astro.site).href.replace(/\/$/, "")
+  : new URL(Astro.url.pathname, Astro.site).href;
 const defaultOgImage = new URL("/images/og-default.webp", Astro.site).href;
 const resolvedOgImage = ogImage || defaultOgImage;
 ---
