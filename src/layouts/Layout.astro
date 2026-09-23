@@ -23,6 +23,25 @@ for (const seg of segments) {
   breadcrumbs.push({ name: seg.split('-').map(function(w) { return w.charAt(0).toUpperCase() + w.slice(1); }).join(' '), url: new URL(accum, Astro.site).href });
 }
 const breadcrumbJson = JSON.stringify({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: breadcrumbs.map(function(bc, i) { return { '@type': 'ListItem', position: i + 1, name: bc.name, item: bc.url }; }) });
+const siteUrl = Astro.site.href.replace(/\/$/, '');
+const organizationJson = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': `${siteUrl}/#organization`,
+  name: 'Best Shanghai Restaurants',
+  url: `${siteUrl}/`,
+  logo: new URL('/images/og-default.webp', Astro.site).href,
+  description: 'Expert-curated guide to Shanghai restaurants and cuisine: hand-picked, personally vetted, editorially independent recommendations for international travelers.',
+});
+const webSiteJson = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${siteUrl}/#website`,
+  name: 'Best Shanghai Restaurants',
+  url: `${siteUrl}/`,
+  publisher: { '@id': `${siteUrl}/#organization` },
+  inLanguage: 'en',
+});
 const canonicalUrl = Astro.url.pathname === "/"
   ? new URL("/", Astro.site).href.replace(/\/$/, "")
   : new URL(Astro.url.pathname, Astro.site).href;
@@ -60,6 +79,8 @@ const resolvedOgImage = ogImage || defaultOgImage;
     <meta name="twitter:image" content={resolvedOgImage} />
     <meta name="twitter:image:alt" content={title} />
   <script type="application/ld+json" set:html={breadcrumbJson}></script>
+  <script type="application/ld+json" set:html={organizationJson}></script>
+  <script type="application/ld+json" set:html={webSiteJson}></script>
   {hreflang && hreflang.length > 0 && hreflang.map((h) => (
     <link rel="alternate" hreflang={h.lang} href={h.href} />
   ))}

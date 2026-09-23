@@ -1,17 +1,26 @@
 # www.shanghai-restaurant.com
-Expert-curated guide to the finest Shanghai restaurants worldwide. From legendary xiaolongbao shops to Michelin-starred fine dining, discover authentic Shanghainese cuisine.
+Expert-curated guide to Shanghai restaurants and cuisine: hand-picked, personally vetted, editorially independent recommendations for international travelers.
 
-## Key Pages
-- [Best Shanghai Restaurants](https://www.shanghai-restaurant.com/best-shanghai-restaurants/): Our ranked guide to the top 15 Shanghai restaurants.
-- [Shanghai Cuisine Guide](https://www.shanghai-restaurant.com/shanghai-cuisine-guide/): Complete guide to Shanghai cuisine with 20 must-try dishes.
-- [Shanghai Restaurant Menu](https://www.shanghai-restaurant.com/shanghai-restaurant-menu/): What to expect on a Shanghai restaurant menu.
-- [Blog](https://www.shanghai-restaurant.com/blog/): Shanghai restaurant stories, guides, and food culture deep dives.
-- [Xiaolongbao Guide](https://www.shanghai-restaurant.com/xiaolongbao/): The ultimate Shanghai soup dumpling guide.
-- [Hairy Crab Guide](https://www.shanghai-restaurant.com/hairy-crab/): Everything about Shanghai's most anticipated food event.
-- [NYC Shanghai Restaurants](https://www.shanghai-restaurant.com/shanghai-restaurant-nyc/)
-- [LA Shanghai Restaurants](https://www.shanghai-restaurant.com/shanghai-restaurant-los-angeles/)
-- [London Shanghai Restaurants](https://www.shanghai-restaurant.com/shanghai-restaurant-london/)
-- [Sydney Shanghai Restaurants](https://www.shanghai-restaurant.com/shanghai-restaurant-sydney/)
+## Top-Level Guides
+- [Home — Shanghai Restaurant Guide](https://www.shanghai-restaurant.com/): Ranked guide to the 15 best Shanghai restaurants, must-try dishes, districts, and dining occasions.
+- [Xiaolongbao Guide](https://www.shanghai-restaurant.com/xiaolongbao/): The ultimate Shanghai soup dumpling guide — history, how to eat, and where to find them.
+- [Shanghai Hairy Crab Guide](https://www.shanghai-restaurant.com/hairy-crab/): When and how to eat da zha xie, and the best places to try it.
+- [Shengjianbao Guide](https://www.shanghai-restaurant.com/shengjianbao/): Shanghai pan-fried soup dumplings — what they are and where to eat them.
+- [Red-Braised Pork (Hongshao Rou)](https://www.shanghai-restaurant.com/red-braised-pork/): The iconic Benbang dish — history, how to order, and where to find the best.
+- [Shanghai Dim Sum Guide](https://www.shanghai-restaurant.com/shanghai-dim-sum/): Dim sum and point-style eating in Shanghai.
+- [Shanghai Restaurant Prices](https://www.shanghai-restaurant.com/shanghai-restaurant-prices/): What a meal really costs across budgets in Shanghai.
+- [Reservation Guide](https://www.shanghai-restaurant.com/reservations/): How to book a table at top Shanghai restaurants as a foreigner.
+- [About](https://www.shanghai-restaurant.com/about/): Who we are and how our recommendations are vetted.
+
+## Cuisine Categories
+- [Benbang (Shanghai Home-Style)](https://www.shanghai-restaurant.com/cuisine/benbang/)
+- [Fine Dining](https://www.shanghai-restaurant.com/cuisine/fine-dining/)
+- [Street Food](https://www.shanghai-restaurant.com/cuisine/street-food/)
+- [Xiaolongbao & Dim Sum](https://www.shanghai-restaurant.com/cuisine/xiaolongbao/)
+- [Hairy Crab](https://www.shanghai-restaurant.com/cuisine/hairy-crab/)
+
+## Restaurants (individual profiles)
+Each restaurant has a full profile linked from the homepage (https://www.shanghai-restaurant.com/). Example: https://www.shanghai-restaurant.com/restaurant/din-tai-fung/ for Din Tai Fung. Profiles also exist for jia-jia-tang-bao, old-jesse, fu-he-hui, yangs-fried-dumpling, lost-heaven, yongfoo-elite, xin-rong-ji, nanxiang, mercato, dexingguan, funkadeli, ren-he-guan, haifuduo, and guangmingcun.
 
 ## About
-We're a curated guide to Shanghai cuisine and restaurants worldwide. Our team researches, visits, and reviews the best Shanghai restaurants to help you find authentic Shanghainese food wherever you are.
+We're an independent editorial guide to Shanghai cuisine and restaurants. Our team researches, visits, and reviews the best Shanghai restaurants to help you find authentic Shanghainese food.
