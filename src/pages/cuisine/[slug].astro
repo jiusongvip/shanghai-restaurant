@@ -25,9 +25,8 @@ const relatedRestaurants = featuredRestaurants.filter(function(rest) { return cu
 const cuisineContent: Record<string, { about: string[]; dishes: { name: string; desc: string }[]; tips: string[] }> = {
   'benbang': {
     about: [
-      'Benbang cuisine — 本帮菜, literally "native-shanghai cooking" — is the home-style food of the Shanghainese themselves, and it is the single best way to understand how the city actually eats. Where Cantonese food chases delicacy and Sichuan food chases heat, Benbang cooks chase depth, and the style is summed up in a single four-character phrase: <em>nong you chi jiang</em> (浓油赤酱) — "thick oil, red sauce" — for its generous use of oil and dark soy, balanced by a spoon of sugar that gives Shanghai cooking its signature sweet-savory edge. The defining technique is hongshao, braising ingredients slowly in that soy-and-sugar base until the sauce clings to the pan.',
-      'The cuisine grew out of the farms and fishing boats of the Taihu lake basin and the old fishing village that Shanghai began as, then codified itself during the city\'s 19th-century boom, when restaurants in the Old City turned humble country dishes into a formal repertoire. That origin explains its character: it is unfussy, generous, and built around preserving and enriching whatever the Yangtze delta supplies that season, from spring bamboo shoots to autumn crab.',
-      'For a first-timer, order toward the sweet-savory braises — hongshao rou, youbao xia (oil-exploded river shrimp), xun hua fish — and let the kitchen\'s lard-fried rice and pickled-greens soups fill out the table. Expect generous portions, a pronounced sweetness, and a price that is gentler than the fine-dining tier. The most authentic Benbang kitchens cluster in the Former French Concession and around the old market streets, where locals still queue for the lunchtime wok rush.',
+      'Benbang cuisine — 本帮菜, "native-shanghai cooking" — is the home-style food of the Shanghainese themselves. Where Cantonese food chases delicacy and Sichuan food chases heat, Benbang cooks chase depth, summed up in a single phrase: <em>nong you chi jiang</em> (浓油赤酱) — "thick oil, red sauce" — for its generous oil and dark soy, balanced by a spoon of sugar. The defining technique is hongshao: braising slowly in that soy-and-sugar base until the sauce clings to the pan.',
+      'For a first-timer, order toward the sweet-savory braises — hongshao rou, youbao xia, xun yu — and expect generous portions, a pronounced sweetness, and gentler prices than the fine-dining tier. The most authentic kitchens cluster in the Former French Concession and the old market streets.',
     ],
     dishes: [
       { name: 'Hongshao Rou (Red Braised Pork)', desc: 'The defining Benbang dish — pork belly slow-braised in dark soy, rock sugar, and Shaoxing wine until meltingly tender with a lacquered glaze.' },
@@ -38,9 +37,8 @@ const cuisineContent: Record<string, { about: string[]; dishes: { name: string; 
   },
   'xiaolongbao': {
     about: [
-      'Xiaolongbao are Shanghai\'s calling card: thin-skinned steamed dumplings that carry a spoonful of hot, savory broth inside each pleated bun. They belong to the broader family of soup dumplings but the Shanghai style is distinct — a lighter, sweeter pork filling, a more delicate wrapper, and a broth built from aspic that melts during steaming. Judging a shop comes down to three things: how thin and strong the skin is, how generous and clean-tasting the soup is, and whether the pleats hold without tearing.',
-      'Beyond the classic pork, the fillings worth working through are crab roe (rich and briny, at its peak in autumn), shrimp, mushroom for something earthier, and the seasonal crayfish version that appears in summer. Nearly every shop serves six to a basket, and locals treat that as one component of a larger breakfast — with wonton soup, scallion pancakes, or shengjianbao alongside rather than a whole meal on its own.',
-      'Timing matters more than reservation: the best, freshest batches come off the steamer in the morning and around the lunchtime rush, and the most storied houses draw queues that snake around the block. It remains one of the cheapest great meals in the city — a basket typically costs RMB 20-45, with plain pork on the low end and crab roe on the high.',
+      'Xiaolongbao are Shanghai\'s calling card: thin-skinned steamed dumplings that carry a spoonful of hot, savory broth inside each pleated bun. The Shanghai style is distinct — a lighter, sweeter pork filling, a more delicate wrapper, and a broth built from aspic that melts during steaming. Judge a shop on three things: how thin and strong the skin is, how clean-tasting the soup is, and whether the pleats hold without tearing.',
+      'Beyond classic pork, work through crab roe (peak in autumn), shrimp, and mushroom. Timing beats reservation — the freshest batches come off the steamer in the morning and at the lunchtime rush, and a basket typically costs RMB 20-45.',
     ],
     dishes: [
       { name: 'Classic Pork Xiaolongbao', desc: 'The original — seasoned pork filling suspended in rich broth inside a delicate wrapper with exactly 18 pleats.' },
@@ -51,9 +49,8 @@ const cuisineContent: Record<string, { about: string[]; dishes: { name: string; 
   },
   'hairy-crab': {
     about: [
-      'For one month each autumn, the Chinese mitten crab — hairy crab, 大闸蟹 — stops Shanghai in its tracks. Native to the Yangtze delta, these small crabs are prized not for their meat but for their roe: a rich, golden, almost custard-like interior that gourmands treat as one of the great seasonal luxuries of Chinese food. The flavor is subtle and sweet with a briny, nutty depth entirely unlike ocean crab, and the whole city organizes its autumn menus around its brief arrival.',
-      'The season is governed by a traditional rule of thumb: female crabs, with their firm orange roe, are best in the ninth month of the lunar calendar (roughly October), males, with their creamy white roe, in the tenth (roughly November). Crabs are steamed whole and eaten methodically with a small knife and scissors, or with chopsticks and patience, accompanied by a dip of black vinegar and shredded ginger. Because the crab is considered a cooling food, it is paired with warming Shaoxing wine and ginger tea — a combination locals take seriously.',
-      'Eating hairy crab well is as much about timing and sourcing as cooking. Look for crabs from Yangcheng Lake during peak season, expect to pay by weight and size (a female is traditionally cheaper than a larger male), and treat a proper crab feast as an occasion, budgeting RMB 200-500 per person. Outside the autumn window, many of the same restaurants serve the roe as xiaolongbao filling or tossed with noodles, so you can taste the season almost year-round.',
+      'For one month each autumn, the Chinese mitten crab — hairy crab, 大闸蟹 — stops Shanghai in its tracks. Prized not for meat but for its roe — a rich, golden, custard-like interior with a briny, nutty depth unlike ocean crab — the whole city organizes its autumn menus around its brief arrival.',
+      'The season follows a traditional rule: female crabs (firm orange roe) peak in the ninth lunar month (~October), males (creamy white roe) in the tenth (~November). They are steamed whole and eaten methodically with black vinegar and shredded ginger, paired with warming Shaoxing wine. Budget RMB 200-500 for a proper feast; outside the window the same restaurants serve the roe as dumpling filling or tossed with noodles.',
     ],
     dishes: [
       { name: 'Steamed Whole Crab with Ginger', desc: 'The purist\'s preparation — live hairy crab steamed whole, served with black vinegar, sugar, and shredded ginger.' },
@@ -64,8 +61,7 @@ const cuisineContent: Record<string, { about: string[]; dishes: { name: string; 
   },
   'street-food': {
     about: [
-      'Shanghai\'s street food is the fast, honest, and cheapest way into the city\'s real flavors: the pan-fried buns, scallion pancakes, sticky-rice rolls, and fried-dumpling-and-soy-milk breakfasts that working Shanghainese have eaten for generations. It is concentrated in the old longtang lane neighborhoods and around the City God Temple bazaar, where the stalls are crowded, cash-light, and relentlessly fresh because turnover is constant.',
-      'Two habits unlock it. First, eat early — most street food is at its best between six and nine in the morning, when the day\'s batch is fried fresh and the queues move fast. Second, follow the line: a crowd of locals waiting at a tiny window is a better recommendation than any guidebook. Prices are a fraction of sit-down dining, and a full street breakfast of shengjianbao, scallion pancake, and a cup of sweet or salted soy milk routinely comes in under RMB 25.',
+      'Shanghai\'s street food is the fast, honest, and cheapest way into the city\'s real flavors: pan-fried buns, scallion pancakes, sticky-rice rolls, and soy-milk breakfasts concentrated in the old longtang lanes and around the City God Temple bazaar. Two habits unlock it — eat early (six to nine in the morning, when the day\'s batch is fried fresh) and follow the line. A full street breakfast routinely comes in under RMB 25.',
     ],
     dishes: [
       { name: 'Shengjianbao', desc: 'Pan-fried pork buns with golden-crisp bottoms, fluffy dough, and a burst of hot savory soup inside.' },
@@ -76,8 +72,7 @@ const cuisineContent: Record<string, { about: string[]; dishes: { name: string; 
   },
   'fine-dining': {
     about: [
-      'Shanghai\'s fine-dining scene is the most international in mainland China and grows more confident every year: three-Michelin-star tasting menus, a thriving Buddhist-vegetarian haute cuisine, and a wall-to-wall of Bund and Lujiazui restaurants where the view is as engineered as the food. The MICHELIN Guide\'s arrival put the city firmly on the world map, and it now rewards both boundary-pushing Western cooking and a serious revival of refined Benbang technique.',
-      'The practical difference from mid-range dining is planning, not price alone. The best rooms fill two to four weeks out, tasting menus are fixed-price (typically RMB 500-2,000-plus a head, wine pairings extra), and several require a card deposit. Vegetarians find an unusual strength here — Shanghai\'s Buddhist kitchens turn mushroom, bamboo pith, and seasonal produce into multi-course art, arguably the city\'s single most distinctive luxury-dining experience.',
+      'Shanghai\'s fine-dining scene is the most international in mainland China: Michelin-starred tasting menus, a thriving Buddhist-vegetarian haute cuisine, and Bund and Lujiazui restaurants where the view is as engineered as the food. What sets it apart from mid-range dining is planning — the best rooms fill two to four weeks out, tasting menus run RMB 500-2,000-plus a head, and several take a card deposit.',
     ],
     dishes: [
       { name: 'Seasonal Tasting Menu', desc: '8-15 course journeys built around seasonal Shanghai ingredients — spring bamboo shoots, autumn hairy crab, winter braises.' },
