@@ -60,7 +60,7 @@ const restaurantBySlug = Object.fromEntries(allRestaurants.map(r => [r.slug, r])
   <section id="local-favorites" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 border-t border-slate-100">
     <div class="mb-10">
       <h2 class="text-2xl md:text-3xl tracking-tight font-semibold text-slate-900">The 15 Best Shanghai Restaurants</h2>
-      <p class="text-slate-500 mt-2">Every restaurant hand-picked and personally vetted. These are the places Shanghainese people queue for — no hotel concierge picks, just the real deal.</p>
+      <p class="text-slate-500 mt-2">Every restaurant hand-picked and personally vetted. These are the places Shanghainese people queue for — no hotel concierge picks, just the real deal. Award badges reflect official listings in the <a href="https://guide.michelin.com/en/cn/shanghai-municipality/shanghai/restaurants" rel="noreferrer" class="text-accent-600 hover:text-accent-700 font-medium">MICHELIN Guide</a>.</p>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {allRestaurants.map((r, i) => (
