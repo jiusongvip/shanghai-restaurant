@@ -6,7 +6,29 @@ import { allRestaurants, cuisines, faqs } from "../data/restaurants";
 import { situations, districts, attractionDining, topDishes, diningTips, quickAccess } from "../data/homepage";
 
 const restaurantBySlug = Object.fromEntries(allRestaurants.map(r => [r.slug, r]));
+
+const siteUrl = "https://www.shanghai-restaurant.com";
+const homepageSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${siteUrl}/#webpage`,
+  url: `${siteUrl}/`,
+  name: "Shanghai Restaurant Guide | Best Dining & Local Food Tips",
+  isPartOf: { "@id": `${siteUrl}/#website` },
+  publisher: { "@id": `${siteUrl}/#organization` },
+  datePublished: "2026-07-29",
+  dateModified: "2026-09-23",
+  author: {
+    "@type": "Person",
+    name: "Li Wei",
+    url: `${siteUrl}/authors/li-wei/`,
+  },
+  about: { "@type": "Thing", name: "Shanghai restaurants and cuisine" },
+});
 ---
+
+<script type="application/ld+json" set:html={homepageSchema}></script>
+
 
 <Layout
   title="Shanghai Restaurant Guide"
@@ -28,12 +50,12 @@ const restaurantBySlug = Object.fromEntries(allRestaurants.map(r => [r.slug, r])
       <div class="flex items-center gap-4 mt-4 text-sm text-slate-400">
         <span class="flex items-center gap-1.5">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          Updated August 2026
+          Updated <time datetime="2026-09-23">September 23, 2026</time>
         </span>
         <span class="text-slate-300">·</span>
-        <span>Hand-picked from 100+ restaurants</span>
+        <span>By <a href="/authors/li-wei/" class="text-slate-500 hover:text-accent-600 font-medium">Li Wei</a></span>
         <span class="text-slate-300">·</span>
-        <span>Curated for international travelers</span>
+        <span>Hand-picked from 100+ restaurants</span>
       </div>
       <div class="flex flex-wrap gap-3 mt-8">
         <a href="#local-favorites" class="btn-soft bg-accent-600 hover:bg-accent-700 text-white text-sm font-medium px-6 py-3 transition-colors inline-flex items-center gap-2">
@@ -237,8 +259,8 @@ const restaurantBySlug = Object.fromEntries(allRestaurants.map(r => [r.slug, r])
           <li><strong>Value</strong> — Does the price match the experience?</li>
           <li><strong>Atmosphere</strong> — Is the setting appropriate for the intended occasion?</li>
         </ul>
-        <p>We do not accept payment for inclusion. Restaurants cannot pay to be listed here. Our recommendations are <strong>editorially independent</strong> and based solely on merit.</p>
-        <p class="text-sm text-slate-400">This guide was last updated in <strong>August 2026</strong>. Restaurant hours, prices, and availability change — we recommend checking directly before visiting.</p>
+        <p>We do not accept payment for inclusion. Restaurants cannot pay to be listed here. Our recommendations are <strong>editorially independent</strong> and based solely on merit. Where a dish or district has a documented history, we cite primary references such as the <a href="https://en.wikipedia.org/wiki/Shanghai_cuisine" rel="noreferrer" class="text-accent-600 hover:text-accent-700 font-medium">overview of Shanghai cuisine</a> and the city's official <a href="https://english.shanghai.gov.cn/" rel="noreferrer" class="text-accent-600 hover:text-accent-700 font-medium">Shanghai municipal portal</a>.</p>
+        <p class="text-sm text-slate-400">This guide was last updated on <time datetime="2026-09-23"><strong>September 23, 2026</strong></time>. Restaurant hours, prices, and availability change — we recommend checking directly before visiting.</p>
       </div>
     </div>
   </section>
