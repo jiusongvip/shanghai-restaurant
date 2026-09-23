@@ -226,7 +226,7 @@ const nearby = allRestaurants
           <h2 class="text-xl font-semibold tracking-tight text-slate-900 mb-4">📍 Nearby Also Try</h2>
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {nearby.map(r => (
-              <a href={`/restaurant/${r.slug}`} class="card-soft bg-white border border-slate-100 p-4 hover:border-accent-200 hover:shadow-tinted transition-all duration-200 group">
+              <a href={`/restaurant/${r.slug}/`} class="card-soft bg-white border border-slate-100 p-4 hover:border-accent-200 hover:shadow-tinted transition-all duration-200 group">
                 <div class="flex items-center gap-2 mb-2">
                   <span class="text-xs font-medium text-accent-600 bg-accent-50 px-1.5 py-0.5 rounded-full">{r.cuisine}</span>
                   <span class="text-xs text-slate-400">{r.pricePerPerson}</span>

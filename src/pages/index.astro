@@ -71,7 +71,7 @@ const restaurantBySlug = Object.fromEntries(allRestaurants.map(r => [r.slug, r])
           priceRange={r.pricePerPerson}
           location={r.location}
           image={r.heroImage}
-          href={`/restaurant/${r.slug}`}
+          href={`/restaurant/${r.slug}/`}
           index={i}
           distanceFromCenter={r.distanceFromCenter}
           awards={r.awards}
@@ -97,7 +97,7 @@ const restaurantBySlug = Object.fromEntries(allRestaurants.map(r => [r.slug, r])
             <p class="text-sm text-slate-500 mt-1.5 leading-relaxed">{s.description}</p>
             <div class="flex flex-wrap gap-1.5 mt-3">
               {restos.slice(0, 3).map(r => (
-                <a href={`/restaurant/${r.slug}`} class="text-xs px-2 py-0.5 bg-slate-50 rounded text-accent-600 hover:bg-accent-100 hover:text-accent-700 transition-colors">{r.name}</a>
+                <a href={`/restaurant/${r.slug}/`} class="text-xs px-2 py-0.5 bg-slate-50 rounded text-accent-600 hover:bg-accent-100 hover:text-accent-700 transition-colors">{r.name}</a>
               ))}
               {restos.length > 3 && <span class="text-xs text-slate-400">+{restos.length - 3} more</span>}
             </div>
@@ -123,7 +123,7 @@ const restaurantBySlug = Object.fromEntries(allRestaurants.map(r => [r.slug, r])
             <p class="text-sm text-slate-500 mt-1.5 leading-relaxed line-clamp-2">{d.description}</p>
             <div class="flex flex-wrap gap-1.5 mt-3">
               {restos.slice(0, 3).map(r => (
-                <a href={`/restaurant/${r.slug}`} class="text-xs px-2 py-0.5 bg-slate-50 rounded text-accent-600 hover:bg-accent-100 hover:text-accent-700 transition-colors">{r.name}</a>
+                <a href={`/restaurant/${r.slug}/`} class="text-xs px-2 py-0.5 bg-slate-50 rounded text-accent-600 hover:bg-accent-100 hover:text-accent-700 transition-colors">{r.name}</a>
               ))}
             </div>
           </div>
@@ -158,7 +158,7 @@ const restaurantBySlug = Object.fromEntries(allRestaurants.map(r => [r.slug, r])
       {topDishes.map(d => {
         const bestResto = restaurantBySlug[d.bestRestaurant];
         return (
-          <a href={bestResto ? `/restaurant/${d.bestRestaurant}` : '#'} class="card-soft bg-white border border-slate-100 p-6 hover:border-amber-200 hover:bg-amber-50/30 transition-all duration-300 group block">
+          <a href={bestResto ? `/restaurant/${d.bestRestaurant}/` : '#'} class="card-soft bg-white border border-slate-100 p-6 hover:border-amber-200 hover:bg-amber-50/30 transition-all duration-300 group block">
             <div class="flex items-start justify-between mb-3">
               <div class="text-3xl">{d.icon}</div>
               <span class="text-xs text-slate-400">{d.priceRange}</span>
@@ -196,7 +196,7 @@ const restaurantBySlug = Object.fromEntries(allRestaurants.map(r => [r.slug, r])
             <p class="text-sm text-slate-500 mt-1.5 leading-relaxed">{a.description}</p>
             <div class="flex flex-wrap gap-1.5 mt-3">
               {restos.map(r => (
-                <a href={`/restaurant/${r.slug}`} class="text-xs px-2 py-0.5 bg-slate-50 rounded text-accent-600 hover:bg-accent-100 hover:text-accent-700 transition-colors">{r.name}</a>
+                <a href={`/restaurant/${r.slug}/`} class="text-xs px-2 py-0.5 bg-slate-50 rounded text-accent-600 hover:bg-accent-100 hover:text-accent-700 transition-colors">{r.name}</a>
               ))}
             </div>
           </div>

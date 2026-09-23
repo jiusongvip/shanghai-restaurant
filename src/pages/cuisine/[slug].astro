@@ -100,7 +100,7 @@ const content = cuisineContent[cuisine?.slug || ''] || { dishes: [], tips: [] };
         <h2 class="text-2xl font-semibold tracking-tight text-slate-900 mb-8">Best {cuisine.name} Restaurants</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {relatedRestaurants.map((r) => (
-            <a href={"/restaurant/" + r.slug} class="group block">
+            <a href={"/restaurant/" + r.slug + "/"} class="group block">
               <div class="card-soft overflow-hidden bg-white shadow-tinted hover:shadow-tinted-lg transition-shadow duration-300">
                 <div class="aspect-[4/3] overflow-hidden bg-slate-100">
                   <img src={r.heroImage} alt={r.name} width="800" height="600" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -139,7 +139,7 @@ const content = cuisineContent[cuisine?.slug || ''] || { dishes: [], tips: [] };
     )}
 
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pb-24">
-      <a href="/shanghai-cuisine-guide/" class="text-sm font-medium text-accent-600 hover:text-accent-700">&larr; Back to Cuisine Guide</a>
+      <a href="/#cuisines" class="text-sm font-medium text-accent-600 hover:text-accent-700">&larr; Back to Cuisine Guide</a>
     </section>
   </main>
 
@@ -148,6 +148,6 @@ const content = cuisineContent[cuisine?.slug || ''] || { dishes: [], tips: [] };
     "@type": "CollectionPage",
     "name": cuisine.name + " - Shanghai Cuisine Guide",
     "description": shortDesc,
-    "url": "https://www.shanghai-restaurant.com/cuisine/" + cuisine.slug,
+    "url": "https://www.shanghai-restaurant.com/cuisine/" + cuisine.slug + "/",
   })} />
 </Layout>
