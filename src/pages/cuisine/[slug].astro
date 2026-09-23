@@ -25,7 +25,7 @@ const relatedRestaurants = featuredRestaurants.filter(function(rest) { return cu
 const cuisineContent: Record<string, { about: string[]; dishes: { name: string; desc: string }[]; tips: string[] }> = {
   'benbang': {
     about: [
-      'Benbang cuisine — 本帮菜, literally "native-shanghai cooking" — is the home-style food of the Shanghainese themselves, and it is the single best way to understand how the city actually eats. Where Cantonese food chases delicacy and Sichuan food chases heat, Benbang cooks chase depth: a style nicknamed "hong nong gou xiang" (red, thick, sweet, fragrant) for its soy-heavy, sugar-lacquered braises and its unapologetic love of pork fat, river fish, and seasonal vegetables. The signature move is hongshao, cooking ingredients slowly in dark soy and rock sugar until the sauce clings to the pan.',
+      'Benbang cuisine — 本帮菜, literally "native-shanghai cooking" — is the home-style food of the Shanghainese themselves, and it is the single best way to understand how the city actually eats. Where Cantonese food chases delicacy and Sichuan food chases heat, Benbang cooks chase depth, and the style is summed up in a single four-character phrase: <em>nong you chi jiang</em> (浓油赤酱) — "thick oil, red sauce" — for its generous use of oil and dark soy, balanced by a spoon of sugar that gives Shanghai cooking its signature sweet-savory edge. The defining technique is hongshao, braising ingredients slowly in that soy-and-sugar base until the sauce clings to the pan.',
       'The cuisine grew out of the farms and fishing boats of the Taihu lake basin and the old fishing village that Shanghai began as, then codified itself during the city\'s 19th-century boom, when restaurants in the Old City turned humble country dishes into a formal repertoire. That origin explains its character: it is unfussy, generous, and built around preserving and enriching whatever the Yangtze delta supplies that season, from spring bamboo shoots to autumn crab.',
       'For a first-timer, order toward the sweet-savory braises — hongshao rou, youbao xia (oil-exploded river shrimp), xun hua fish — and let the kitchen\'s lard-fried rice and pickled-greens soups fill out the table. Expect generous portions, a pronounced sweetness, and a price that is gentler than the fine-dining tier. The most authentic Benbang kitchens cluster in the Former French Concession and around the old market streets, where locals still queue for the lunchtime wok rush.',
     ],
@@ -90,6 +90,28 @@ const cuisineContent: Record<string, { about: string[]; dishes: { name: string; 
 
 
 const content = cuisineContent[cuisine?.slug || ''] || { about: [], dishes: [], tips: [] };
+
+const site = "https://www.shanghai-restaurant.com";
+const pageUrl = `${site}/cuisine/${cuisine.slug}/`;
+const collectionJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": `${pageUrl}#collection`,
+  name: `${cuisine.name} - Shanghai Cuisine Guide`,
+  description: shortDesc,
+  url: pageUrl,
+  isPartOf: { "@id": `${site}/#website` },
+  about: { "@type": "Thing", name: cuisine.name },
+  mainEntity: {
+    "@type": "ItemList",
+    itemListElement: relatedRestaurants.map((r, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: r.name,
+      url: `${site}/restaurant/${r.slug}/`,
+    })),
+  },
+});
 ---
 
 <Layout
@@ -178,11 +200,5 @@ const content = cuisineContent[cuisine?.slug || ''] || { about: [], dishes: [], 
     </section>
   </main>
 
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": cuisine.name + " - Shanghai Cuisine Guide",
-    "description": shortDesc,
-    "url": "https://www.shanghai-restaurant.com/cuisine/" + cuisine.slug + "/",
-  })} />
+  <script type="application/ld+json" set:html={collectionJson}></script>
 </Layout>

@@ -1,31 +1,48 @@
 ---
+const site = Astro.site.href.replace(/\/$/, '');
 export interface Props {
   headline: string;
   description: string;
   url: string;
+  image?: string;
   datePublished?: string;
   dateModified?: string;
 }
 
-const { headline, description, url, datePublished = "2026-07-29", dateModified = "2026-09-23" } = Astro.props;
+const {
+  headline,
+  description,
+  url,
+  image = `${site}/images/og-default.webp`,
+  datePublished = "2026-07-29",
+  dateModified = "2026-09-23",
+} = Astro.props;
+const pageUrl = url.endsWith('/') ? url : url + '/';
 ---
 
 <script type="application/ld+json" set:html={JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Article",
+  "@id": `${pageUrl}#article`,
+  mainEntityOfPage: { "@type": "WebPage", "@id": pageUrl },
   headline,
   description,
-  url,
+  image: [image],
+  url: pageUrl,
+  inLanguage: "en",
   datePublished,
   dateModified,
   author: {
     "@type": "Person",
+    "@id": `${site}/authors/li-wei/#person`,
     name: "Li Wei",
-    url: "https://www.shanghai-restaurant.com/authors/li-wei/",
+    url: `${site}/authors/li-wei/`,
   },
   publisher: {
     "@type": "Organization",
+    "@id": `${site}/#organization`,
     name: "Best Shanghai Restaurants",
-    url: "https://www.shanghai-restaurant.com",
+    url: `${site}/`,
+    logo: { "@type": "ImageObject", url: `${site}/images/og-default.webp` },
   },
 })} />

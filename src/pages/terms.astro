@@ -1,5 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
+const site = "https://www.shanghai-restaurant.com";
+const pageUrl = `${site}/terms/`;
+const termsJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${pageUrl}#webpage`,
+  url: pageUrl,
+  name: "Terms of Use",
+  inLanguage: "en",
+  isPartOf: { "@id": `${site}/#website` },
+});
 ---
 
 <Layout noindex
@@ -28,4 +39,5 @@ import Layout from "../layouts/Layout.astro";
       </div>
     </section>
   </main>
+  <script type="application/ld+json" set:html={termsJson}></script>
 </Layout>

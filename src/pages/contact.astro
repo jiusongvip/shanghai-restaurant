@@ -1,6 +1,30 @@
 ---
 import Layout from "../layouts/Layout.astro";
 const email = "hello@shanghai-restaurant.com";
+const site = "https://www.shanghai-restaurant.com";
+const pageUrl = `${site}/contact/`;
+const contactJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "@id": `${pageUrl}#webpage`,
+  url: pageUrl,
+  name: "Contact Best Shanghai Restaurants",
+  description: "Contact Best Shanghai Restaurants to report a correction, ask a dining question, or suggest a restaurant for the guide.",
+  isPartOf: { "@id": `${site}/#website` },
+  about: {
+    "@type": "Organization",
+    "@id": `${site}/#organization`,
+    name: "Best Shanghai Restaurants",
+    url: `${site}/`,
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer support",
+      email,
+      url: pageUrl,
+      availableLanguage: ["English", "Chinese"],
+    },
+  },
+});
 ---
 
 <Layout
@@ -31,4 +55,5 @@ const email = "hello@shanghai-restaurant.com";
       </div>
     </section>
   </main>
+  <script type="application/ld+json" set:html={contactJson}></script>
 </Layout>

@@ -1,5 +1,17 @@
 ---
 import Layout from "../layouts/Layout.astro";
+const site = "https://www.shanghai-restaurant.com";
+const pageUrl = `${site}/about/`;
+const aboutJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "@id": `${pageUrl}#webpage`,
+  url: pageUrl,
+  name: "About Best Shanghai Restaurants",
+  description: "How Best Shanghai Restaurants researches, vets, and independently reviews Shanghai restaurants, dishes, and dining etiquette for international travelers.",
+  isPartOf: { "@id": `${site}/#website` },
+  about: { "@id": `${site}/#organization` },
+});
 ---
 
 <Layout
@@ -37,4 +49,5 @@ import Layout from "../layouts/Layout.astro";
       </div>
     </section>
   </main>
+  <script type="application/ld+json" set:html={aboutJson}></script>
 </Layout>
