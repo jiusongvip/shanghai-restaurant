@@ -10,7 +10,7 @@ export function getStaticPaths() {
 const { slug } = Astro.params;
 const restaurant = allRestaurants.find((r) => r.slug === slug);
 if (!restaurant) return Astro.redirect("/404");
-const restaurantTitle = `${restaurant.name} (${restaurant.nameZh}) — A Foreigner's Guide to Dining in Shanghai`;
+const restaurantTitle = `${restaurant.name} Menu & Prices — Shanghai`;
 const paymentLabel: Record<string, string> = {
   "Cash": "💵 Cash",
   "WeChat Pay": "💚 WeChat Pay",
