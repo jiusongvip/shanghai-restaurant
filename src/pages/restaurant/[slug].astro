@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { allRestaurants } from "../../data/restaurants";
+import { restaurantMetaDescriptions } from "../../data/restaurantMeta";
 
 export function getStaticPaths() {
   return allRestaurants.map((r) => ({ params: { slug: r.slug } }));
@@ -25,7 +26,7 @@ const nearby = allRestaurants
 
 <Layout
   fullTitle={restaurantTitle}
-  description={`Everything you need to eat at ${restaurant.name} (${restaurant.nameZh}) in Shanghai: how to order, what to say in Chinese, how to pay, reservation tips, and more.`}
+  description={restaurantMetaDescriptions[restaurant.slug] ?? `Everything you need to eat at ${restaurant.name} (${restaurant.nameZh}) in Shanghai: how to order, what to say in Chinese, how to pay, reservation tips, and more.`}
 >
   <main>
     <!-- Hero -->
