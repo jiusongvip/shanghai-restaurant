@@ -1,0 +1,48 @@
+---
+import Layout from "../../layouts/Layout.astro";
+const guides = [
+  { href: "/xiaolongbao/", title: "Xiaolongbao: Shanghai Soup Dumpling Guide" },
+  { href: "/hairy-crab/", title: "Shanghai Hairy Crab Guide" },
+  { href: "/shengjianbao/", title: "Shengjianbao: Pan-Fried Soup Dumplings" },
+  { href: "/red-braised-pork/", title: "Red-Braised Pork (Hongshao Rou)" },
+  { href: "/shanghai-dim-sum/", title: "Shanghai Dim Sum Guide" },
+  { href: "/shanghai-restaurant-prices/", title: "Shanghai Restaurant Prices" },
+  { href: "/reservations/", title: "Shanghai Restaurant Reservation Guide" },
+];
+const personJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://www.shanghai-restaurant.com/authors/li-wei/#person",
+  name: "Li Wei",
+  url: "https://www.shanghai-restaurant.com/authors/li-wei/",
+  worksFor: { "@id": "https://www.shanghai-restaurant.com/#organization" },
+});
+---
+
+<Layout
+  fullTitle="Li Wei — Author | Best Shanghai Restaurants"
+  description="Li Wei is the writer and researcher behind Best Shanghai Restaurants, an independent guide to Shanghai's restaurants, dishes, and dining etiquette for international travelers."
+>
+  <main>
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 md:pt-28 pb-8">
+      <div class="max-w-3xl">
+        <p class="text-sm font-medium text-accent-600 mb-3">Author</p>
+        <h1 class="text-4xl md:text-6xl tracking-tighter leading-none font-semibold text-slate-900">Li Wei</h1>
+      </div>
+    </section>
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+      <div class="max-w-3xl prose prose-slate">
+        <h2 class="text-2xl font-semibold tracking-tight text-slate-900 mb-4">About Li Wei</h2>
+        <p class="text-slate-500 leading-relaxed">Li Wei is the writer and researcher behind Best Shanghai Restaurants. Every restaurant, dish, and tip on this site is based on first-hand visits and independent research — no sponsored listings, no copy-pasted directories.</p>
+        <p class="text-slate-500 leading-relaxed">The guides here focus on what international travelers actually need to know: how to order, what things cost, how reservations work, and where to find authentic Shanghai flavors, from street-side shengjianbao to Benbang classics and fine dining.</p>
+        <h2 class="text-2xl font-semibold tracking-tight text-slate-900 mt-10 mb-4">Guides by Li Wei</h2>
+        <ul class="list-disc list-inside text-slate-500 leading-relaxed space-y-2">
+          {guides.map((g) => (
+            <li><a href={g.href} class="text-accent-600 hover:text-accent-700">{g.title}</a></li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  </main>
+  <script type="application/ld+json" set:html={personJson}></script>
+</Layout>

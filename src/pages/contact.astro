@@ -1,0 +1,34 @@
+---
+import Layout from "../layouts/Layout.astro";
+const email = "hello@shanghai-restaurant.com";
+---
+
+<Layout
+  fullTitle="Contact — Best Shanghai Restaurants"
+  description="Get in touch with Best Shanghai Restaurants. Ask a question, report a correction, or share a restaurant tip. We reply to every message at hello@shanghai-restaurant.com."
+>
+  <main>
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 md:pt-28 pb-24">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-6xl tracking-tighter leading-none font-semibold text-slate-900">Contact</h1>
+        <p class="text-lg text-slate-500 mt-6 leading-relaxed max-w-[60ch]">Questions, corrections, or a Shanghai restaurant worth adding to the guide? We read every message.</p>
+
+        <div class="mt-10 space-y-6 text-slate-500 leading-relaxed">
+          <h2 class="text-2xl font-semibold tracking-tight text-slate-900">Email us</h2>
+          <p>The fastest way to reach the team is by email at <a href={`mailto:${email}`} class="font-medium text-accent-600 hover:text-accent-700 break-all">{email}</a>. We typically reply within a few business days.</p>
+
+          <h2 class="text-2xl font-semibold tracking-tight text-slate-900 mt-10">What we can help with</h2>
+          <ul class="list-disc list-inside space-y-2">
+            <li>Corrections to restaurant details — hours, prices, or addresses that have changed.</li>
+            <li>Questions about ordering, reservations, or dining etiquette in Shanghai.</li>
+            <li>Suggestions for restaurants or dishes we should cover.</li>
+            <li>Press, partnership, or content-use enquiries.</li>
+          </ul>
+
+          <h2 class="text-2xl font-semibold tracking-tight text-slate-900 mt-10">Editorial independence</h2>
+          <p>Best Shanghai Restaurants is editorially independent. We do not sell rankings or accept payment for inclusion, and we disclose any sponsored relationship. Read more on our <a href="/about/" class="text-accent-600 hover:text-accent-700">About</a> page.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
