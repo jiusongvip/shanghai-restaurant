@@ -27,6 +27,7 @@ const cuisineContent: Record<string, { about: string[]; dishes: { name: string; 
     about: [
       'Benbang cuisine — 本帮菜, "native-shanghai cooking" — is the home-style food of the Shanghainese themselves. Where Cantonese food chases delicacy and Sichuan food chases heat, Benbang cooks chase depth, summed up in a single phrase: <em>nong you chi jiang</em> (浓油赤酱) — "thick oil, red sauce" — for its generous oil and dark soy, balanced by a spoon of sugar. The defining technique is hongshao: braising slowly in that soy-and-sugar base until the sauce clings to the pan.',
       'For a first-timer, order toward the sweet-savory braises — hongshao rou, youbao xia, xun yu — and expect generous portions, a pronounced sweetness, and gentler prices than the fine-dining tier. The most authentic kitchens cluster in the Former French Concession and the old market streets.',
+      'Broadly, <a href="https://en.wikipedia.org/wiki/Shanghai_cuisine" rel="noreferrer">Wikipedia</a> characterises the regional cooking as one that "aims for lightness in flavor and is mellower and slightly sweet in taste compared to some other Chinese cuisines," adding that "sugar is often added to soy sauce" — the sweet-soy base that defines the Benbang table.',
     ],
     dishes: [
       { name: 'Hongshao Rou (Red Braised Pork)', desc: 'The defining Benbang dish — pork belly slow-braised in dark soy, rock sugar, and Shaoxing wine until meltingly tender with a lacquered glaze.' },
@@ -39,6 +40,7 @@ const cuisineContent: Record<string, { about: string[]; dishes: { name: string; 
     about: [
       'Xiaolongbao are Shanghai\'s calling card: thin-skinned steamed dumplings that carry a spoonful of hot, savory broth inside each pleated bun. The Shanghai style is distinct — a lighter, sweeter pork filling, a more delicate wrapper, and a broth built from aspic that melts during steaming. Judge a shop on three things: how thin and strong the skin is, how clean-tasting the soup is, and whether the pleats hold without tearing.',
       'Beyond classic pork, work through crab roe (peak in autumn), shrimp, and mushroom. Timing beats reservation — the freshest batches come off the steamer in the morning and at the lunchtime rush, and a basket typically costs RMB 20-45.',
+      '<a href="https://en.wikipedia.org/wiki/Xiaolongbao" rel="noreferrer">Wikipedia</a> notes they are "typically made of minced pork wrapped in flour dough," and that a chilled aspic is sealed inside so that "heat from steaming then melts the gelatin-gelled aspic into soup" — the broth that makes each bun a soup dumpling.',
     ],
     dishes: [
       { name: 'Classic Pork Xiaolongbao', desc: 'The original — seasoned pork filling suspended in rich broth inside a delicate wrapper with exactly 18 pleats.' },
@@ -51,6 +53,7 @@ const cuisineContent: Record<string, { about: string[]; dishes: { name: string; 
     about: [
       'For one month each autumn, the Chinese mitten crab — hairy crab, 大闸蟹 — stops Shanghai in its tracks. Prized not for meat but for its roe — a rich, golden, custard-like interior with a briny, nutty depth unlike ocean crab — the whole city organizes its autumn menus around its brief arrival.',
       'The season follows a traditional rule: female crabs (firm orange roe) peak in the ninth lunar month (~October), males (creamy white roe) in the tenth (~November). They are steamed whole and eaten methodically with black vinegar and shredded ginger, paired with warming Shaoxing wine. Budget RMB 200-500 for a proper feast; outside the window the same restaurants serve the roe as dumpling filling or tossed with noodles.',
+      'That rule has a source: <a href="https://en.wikipedia.org/wiki/Chinese_mitten_crab" rel="noreferrer">Wikipedia</a> records that the crabs "are prized for the female crab roe, which ripens in the ninth lunar month and the males in the 10th."',
     ],
     dishes: [
       { name: 'Steamed Whole Crab with Ginger', desc: 'The purist\'s preparation — live hairy crab steamed whole, served with black vinegar, sugar, and shredded ginger.' },
@@ -62,6 +65,7 @@ const cuisineContent: Record<string, { about: string[]; dishes: { name: string; 
   'street-food': {
     about: [
       'Shanghai\'s street food is the fast, honest, and cheapest way into the city\'s real flavors: pan-fried buns, scallion pancakes, sticky-rice rolls, and soy-milk breakfasts concentrated in the old longtang lanes and around the City God Temple bazaar. Two habits unlock it — eat early (six to nine in the morning, when the day\'s batch is fried fresh) and follow the line. A full street breakfast routinely comes in under RMB 25.',
+      'The signature bun has a documented pedigree: <a href="https://en.wikipedia.org/wiki/Shengjian_mantou" rel="noreferrer">Wikipedia</a> describes shengjian mantou as "small, pan-fried baozi, filled with pork and gelatin," which "originated in Suzhou at the beginning of the 20th century" before becoming a Shanghai breakfast staple.',
     ],
     dishes: [
       { name: 'Shengjianbao', desc: 'Pan-fried pork buns with golden-crisp bottoms, fluffy dough, and a burst of hot savory soup inside.' },
@@ -73,6 +77,7 @@ const cuisineContent: Record<string, { about: string[]; dishes: { name: string; 
   'fine-dining': {
     about: [
       'Shanghai\'s fine-dining scene is the most international in mainland China: Michelin-starred tasting menus, a thriving Buddhist-vegetarian haute cuisine, and Bund and Lujiazui restaurants where the view is as engineered as the food. What sets it apart from mid-range dining is planning — the best rooms fill two to four weeks out, tasting menus run RMB 500-2,000-plus a head, and several take a card deposit.',
+      'The star count bears that out: per <a href="https://en.wikipedia.org/wiki/List_of_Michelin-starred_restaurants_in_Shanghai" rel="noreferrer">Wikipedia</a>, "as of the 2026 Michelin Guide edition, there are 77 restaurants in Shanghai with a Michelin-star rating."',
     ],
     dishes: [
       { name: 'Seasonal Tasting Menu', desc: '8-15 course journeys built around seasonal Shanghai ingredients — spring bamboo shoots, autumn hairy crab, winter braises.' },
@@ -127,7 +132,7 @@ const collectionJson = JSON.stringify({
         <div class="max-w-3xl space-y-6">
           <h2 class="text-2xl font-semibold tracking-tight text-slate-900 mb-2">About {cuisine.name}</h2>
           {content.about.map((para) => (
-            <p class="text-slate-500 leading-relaxed">{para}</p>
+            <p class="text-slate-500 leading-relaxed" set:html={para}></p>
           ))}
         </div>
       </section>
